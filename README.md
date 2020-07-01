@@ -8,7 +8,7 @@ pt-BR </br>
 
 ---------------------------------------------------------------------------------------------
 
-# JS ICMS calculator
+# ICMS calculator in JS
 
 
 JavaScript </br>
