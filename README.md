@@ -3,6 +3,7 @@
 Website criado para realizar de maneira simples e rápida o cálculo de imposto de ICMS, mostrando também a memória de cálculo utilizada e uma explicação básica sobre o ICMS, o website foi criado utilizando JavaScript, HTML5 e CSS3. 
 
 Andamento -> <strong>40% - Offline</strong>
+
 JavaScript </br>
 HTML5 | CSS3 </br>
 Microsoft VSCode 1.46.1 </br>
