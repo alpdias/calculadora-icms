@@ -24,53 +24,53 @@ function carregarOrigem() { // funçao para mostrar no elemento 'input' o valor 
         aliquotaOrigem = 17;
     } else if (origemText === 'AP') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'AM'){
+    } else if (origemText === 'AM') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'BA'){
+    } else if (origemText === 'BA') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'CE'){
+    } else if (origemText === 'CE') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'DF'){
+    } else if (origemText === 'DF') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'ES'){
+    } else if (origemText === 'ES') {
         aliquotaOrigem = 17;
-    } else if (origemText === 'GO'){
+    } else if (origemText === 'GO') {
         aliquotaOrigem = 17;
-    } else if (origemText === 'MA'){
+    } else if (origemText === 'MA') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'MT'){
+    } else if (origemText === 'MT') {
         aliquotaOrigem = 17;
-    }else if (origemText === 'MS'){
+    }else if (origemText === 'MS') {
         aliquotaOrigem = 17;
-    } else if (origemText === 'MG'){
+    } else if (origemText === 'MG') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'PA'){
+    } else if (origemText === 'PA') {
         aliquotaOrigem = 17;
-    } else if (origemText === 'PB'){
+    } else if (origemText === 'PB') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'PR'){
+    } else if (origemText === 'PR') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'PE'){
+    } else if (origemText === 'PE') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'PI'){
+    } else if (origemText === 'PI') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'RJ'){
+    } else if (origemText === 'RJ') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'RN'){
+    } else if (origemText === 'RN') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'RS'){
+    } else if (origemText === 'RS') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'RO'){
+    } else if (origemText === 'RO') {
         aliquotaOrigem = 17.5;
-    } else if (origemText === 'RR'){
+    } else if (origemText === 'RR') {
         aliquotaOrigem = 17;
-    } else if (origemText === 'SC'){
+    } else if (origemText === 'SC') {
         aliquotaOrigem = 17;
-    } else if (origemText === 'SP'){
+    } else if (origemText === 'SP') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'SE'){
+    } else if (origemText === 'SE') {
         aliquotaOrigem = 18;
-    } else if (origemText === 'TO'){
+    } else if (origemText === 'TO') {
         aliquotaOrigem = 18;
     } else {
         aliquotaOrigem = 0;
@@ -93,53 +93,53 @@ function carregarDestino() { // funçao para mostrar no elemento 'input' o valor
         aliquotaDestino = 17;
     } else if (destinoText === 'AP') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'AM'){
+    } else if (destinoText === 'AM') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'BA'){
+    } else if (destinoText === 'BA') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'CE'){
+    } else if (destinoText === 'CE') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'DF'){
+    } else if (destinoText === 'DF') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'ES'){
+    } else if (destinoText === 'ES') {
         aliquotaDestino = 17;
-    } else if (destinoText === 'GO'){
+    } else if (destinoText === 'GO') {
         aliquotaDestino = 17;
-    } else if (destinoText === 'MA'){
+    } else if (destinoText === 'MA') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'MT'){
+    } else if (destinoText === 'MT') {
         aliquotaDestino = 17;
-    }else if (destinoText === 'MS'){
+    }else if (destinoText === 'MS') {
         aliquotaDestino = 17;
-    } else if (destinoText === 'MG'){
+    } else if (destinoText === 'MG') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'PA'){
+    } else if (destinoText === 'PA') {
         aliquotaDestino = 17;
-    } else if (destinoText === 'PB'){
+    } else if (destinoText === 'PB') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'PR'){
+    } else if (destinoText === 'PR') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'PE'){
+    } else if (destinoText === 'PE') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'PI'){
+    } else if (destinoText === 'PI') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'RJ'){
+    } else if (destinoText === 'RJ') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'RN'){
+    } else if (destinoText === 'RN') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'RS'){
+    } else if (destinoText === 'RS') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'RO'){
+    } else if (destinoText === 'RO') {
         aliquotaDestino = 17.5;
-    } else if (destinoText === 'RR'){
+    } else if (destinoText === 'RR') {
         aliquotaDestino = 17;
-    } else if (destinoText === 'SC'){
+    } else if (destinoText === 'SC') {
         aliquotaDestino = 17;
-    } else if (destinoText === 'SP'){
+    } else if (destinoText === 'SP') { 
         aliquotaDestino = 18;
-    } else if (destinoText === 'SE'){
+    } else if (destinoText === 'SE') {
         aliquotaDestino = 18;
-    } else if (destinoText === 'TO'){
+    } else if (destinoText === 'TO') {
         aliquotaDestino = 18;
     } else {
         aliquotaDestino = 0;
