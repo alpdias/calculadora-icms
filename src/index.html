@@ -10,8 +10,9 @@ Criado em 07/2020
     </head>
     <body>
         <h1>Calculadora de ICMS</h1>
-        <div id="app">
-            <input type="text" name="origem" id="origem" placeholder="Estado Origem">
+        <div id="simples">
+            <input type="number" name="base" id="base" placeholder="Base de Cálculo"/></br>
+            <input type="text" name="origem" id="origem" placeholder="Estado Origem"/>
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">
                 <option value=""></option>
                 <option value="Acre">AC</option>
@@ -42,41 +43,12 @@ Criado em 07/2020
                 <option value="Sergipe">SE</option>
                 <option value="Tocantins">TO</option>
             </select>
-            <input type="text" name="destino" id="destino" placeholder="Estado Destino">
-            <select name="destinoSelect" id="destinoSelect" onclick="carregarDestino()">
-                <option value=""></option>
-                <option value="Acre">AC</option>
-                <option value="Alagoas">AL</option>
-                <option value="Amapá">AP</option>
-                <option value="Amazonas">AM</option>
-                <option value="Bahia">BA</option>
-                <option value="Ceará">CE</option>
-                <option value="Distrito Federal">DF</option>
-                <option value="Espírito Santo">ES</option>
-                <option value="Goiás">GO</option>
-                <option value="Maranhão">MA</option>
-                <option value="Mato Grosso">MT</option>
-                <option value="Mato Grosso do Sul">MS</option>
-                <option value="Minas Gerais">MG</option>
-                <option value="Pará">PA</option>
-                <option value="Paraíba">PB</option>
-                <option value="Paraná">PR</option>
-                <option value="Pernambuco">PE</option>
-                <option value="Piauí">PI</option>
-                <option value="Rio de Janeiro">RJ</option>
-                <option value="Rio Grande do Norte">RN</option>
-                <option value="Rio Grande do Sul">RS</option>
-                <option value="Rondônia">RO</option>
-                <option value="Roraima">RR</option>
-                <option value="Santa Catarina">SC</option>
-                <option value="São Paulo">SP</option>
-                <option value="Sergipe">SE</option>
-                <option value="Tocantins">TO</option>
-            </select>
+            <div id="completo"></div>
+            <button name="calcular" id="calcular" onclick="calcular()">Calcular</button>
+            <input type="radio" name="Inter" id="simples" checked onclick="verificarSimples()"/><label for="simples">Simples</label>
+            <input type="radio" name="Inter" id="interestadual" onclick="verificarCompleto()"/><label for="interestadual">Interestadual</label>
         </div>
-        <div id="button">
-            <button name="calcular" id="calcular">Calcular</button>
-        </div>
-    <script src="javascript/main.js"></script>
+        <div id="resultado"></div>
+        <script src="javascript/main.js"></script>
     </body>
 </html>
