@@ -10,11 +10,11 @@ Criado em 07/2020
     </head>
     <body>
         <h1>Calculadora de ICMS</h1>
-        <div id="simples">
+        <div id="app">
             <input type="number" name="base" id="base" placeholder="Base de Cálculo"/></br>
-            <input type="text" name="origem" id="origem" placeholder="Estado Origem"/>
+            <input type="text" name="origem" id="origem" placeholder="Estado"/>
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">
-                <option value=""></option>
+                <option value="">UF</option>
                 <option value="Acre">AC</option>
                 <option value="Alagoas">AL</option>
                 <option value="Amapá">AP</option>
@@ -42,11 +42,10 @@ Criado em 07/2020
                 <option value="São Paulo">SP</option>
                 <option value="Sergipe">SE</option>
                 <option value="Tocantins">TO</option>
-            </select>
-            <div id="completo"></div>
-            <button name="calcular" id="calcular" onclick="calcular()">Calcular</button>
-            <input type="radio" name="Inter" id="simples" checked onclick="verificarSimples()"/><label for="simples">Simples</label>
-            <input type="radio" name="Inter" id="interestadual" onclick="verificarCompleto()"/><label for="interestadual">Interestadual</label>
+            </select></br>
+            <button name="calcular" id="calcular" onclick="calcular()">CALCULAR</button>
+            <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>
+            <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>
         </div>
         <div id="resultado"></div>
         <script src="javascript/main.js"></script>

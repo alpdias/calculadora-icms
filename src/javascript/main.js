@@ -85,13 +85,14 @@ function calculoSimples() { // funçao para calcular o valor do ICMS simples
 
 };
 
-function verificarCompleto() { // funçao para verificar se o elemento 'radio' no html esta preenchido e inserir html
+function complemento() { // funçao para verificar se o elemento 'radio' no html esta preenchido e inserir html
 
     document.querySelector('#interestadual').checked = true; // verificar 'radio' checked
 
-    document.querySelector('#completo').innerHTML = '<input type="text" name="destino" id="destino" placeholder="Estado Destino">\
-        <select name="destinoSelect" id="destinoSelect" onclick="carregarDestino()">\
-        <option value=""></option>\
+    document.querySelector('#app').innerHTML = '<input type="number" name="base" id="base" placeholder="Base de Cálculo"/></br>\
+        <input type="text" name="origem" id="origem" placeholder="Estado Origem"/>\
+        <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
+        <option value="">UF</option>\
         <option value="Acre">AC</option>\
         <option value="Alagoas">AL</option>\
         <option value="Amapá">AP</option>\
@@ -119,15 +120,83 @@ function verificarCompleto() { // funçao para verificar se o elemento 'radio' n
         <option value="São Paulo">SP</option>\
         <option value="Sergipe">SE</option>\
         <option value="Tocantins">TO</option>\
-        </select>';
+        </select></br>\
+        <input type="text" name="destino" id="destino" placeholder="Estado Destino">\
+        <select name="destinoSelect" id="destinoSelect" onclick="carregarDestino()">\
+        <option value="">UF</option>\
+        <option value="Acre">AC</option>\
+        <option value="Alagoas">AL</option>\
+        <option value="Amapá">AP</option>\
+        <option value="Amazonas">AM</option>\
+        <option value="Bahia">BA</option>\
+        <option value="Ceará">CE</option>\
+        <option value="Distrito Federal">DF</option>\
+        <option value="Espírito Santo">ES</option>\
+        <option value="Goiás">GO</option>\
+        <option value="Maranhão">MA</option>\
+        <option value="Mato Grosso">MT</option>\
+        <option value="Mato Grosso do Sul">MS</option>\
+        <option value="Minas Gerais">MG</option>\
+        <option value="Pará">PA</option>\
+        <option value="Paraíba">PB</option>\
+        <option value="Paraná">PR</option>\
+        <option value="Pernambuco">PE</option>\
+        <option value="Piauí">PI</option>\
+        <option value="Rio de Janeiro">RJ</option>\
+        <option value="Rio Grande do Norte">RN</option>\
+        <option value="Rio Grande do Sul">RS</option>\
+        <option value="Rondônia">RO</option>\
+        <option value="Roraima">RR</option>\
+        <option value="Santa Catarina">SC</option>\
+        <option value="São Paulo">SP</option>\
+        <option value="Sergipe">SE</option>\
+        <option value="Tocantins">TO</option>\
+        </select></br>\
+        <button name="calcular" id="calcular" onclick="calcular()">CALCULAR</button>\
+        <input type="radio" name="Inter" id="simples" onclick="simples()"/><label for="simples">ICMS</label>\
+        <input type="radio" name="Inter" id="interestadual" checked onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
 
 };
 
-function verificarSimples() { // funçao para verificar se o elemento 'radio' no html esta preenchido e inserir um html novo
+function simples() { // funçao para verificar se o elemento 'radio' no html esta preenchido e inserir um html novo
 
     document.querySelector('#simples').checked = true; // verificar 'radio' checked
 
-    document.querySelector('#completo').innerHTML = ''; // inserir html 
+    document.querySelector('#app').innerHTML = '<input type="number" name="base" id="base" placeholder="Base de Cálculo"/></br>\
+        <input type="text" name="origem" id="origem" placeholder="Estado"/>\
+        <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
+        <option value="">UF</option>\
+        <option value="Acre">AC</option>\
+        <option value="Alagoas">AL</option>\
+        <option value="Amapá">AP</option>\
+        <option value="Amazonas">AM</option>\
+        <option value="Bahia">BA</option>\
+        <option value="Ceará">CE</option>\
+        <option value="Distrito Federal">DF</option>\
+        <option value="Espírito Santo">ES</option>\
+        <option value="Goiás">GO</option>\
+        <option value="Maranhão">MA</option>\
+        <option value="Mato Grosso">MT</option>\
+        <option value="Mato Grosso do Sul">MS</option>\
+        <option value="Minas Gerais">MG</option>\
+        <option value="Pará">PA</option>\
+        <option value="Paraíba">PB</option>\
+        <option value="Paraná">PR</option>\
+        <option value="Pernambuco">PE</option>\
+        <option value="Piauí">PI</option>\
+        <option value="Rio de Janeiro">RJ</option>\
+        <option value="Rio Grande do Norte">RN</option>\
+        <option value="Rio Grande do Sul">RS</option>\
+        <option value="Rondônia">RO</option>\
+        <option value="Roraima">RR</option>\
+        <option value="Santa Catarina">SC</option>\
+        <option value="São Paulo">SP</option>\
+        <option value="Sergipe">SE</option>\
+        <option value="Tocantins">TO</option>\
+        </select></br>\
+        <button name="calcular" id="calcular" onclick="calcular()">CALCULAR</button>\
+        <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>\
+        <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
     
 };
 
@@ -205,7 +274,7 @@ function carregarDestino() { // funçao para mostrar no elemento 'input' o valor
 
 };
 
-function calculoCompleto() {
+function calculoComplemento() {
 
     var base = document.querySelector('#base').value; // valor do elemento 'input' com id '#base' (valor para base de calculo)
 
