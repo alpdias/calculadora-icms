@@ -3,7 +3,7 @@ Criado em 07/2020
 @Autor: Paulo https://github.com/alpdias
 */
 
-simples(); // gambiarra para limpar html e JS da tela ao recarregar a pagina 
+simples(); // gambiarra para limpar o html e o JS da tela ao recarregar a pagina 
 
 function carregarOrigem() { // funçao para mostrar no elemento 'input' o valor selecionado e definir o valor
 
@@ -84,7 +84,7 @@ function calculoSimples() { // funçao para calcular o valor do ICMS
 
 };
 
-function complemento() { // funçao para verificar se o elemento 'radio' no html esta preenchido e inserir novo html
+function complemento() { // funçao para verificar se o elemento 'radio' no html esta preenchido e inserir o novo html
 
     document.querySelector('#interestadual').checked = true; // verificar 'radio' checked
 
