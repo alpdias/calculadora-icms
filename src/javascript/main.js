@@ -12,7 +12,7 @@ function carregarOrigem() { // funçao para mostrar no elemento 'input' o valor 
 
     var aliquotaOrigem = 0;
 
-    var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option'no html
+    var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
     if (origemText === 'AC') {
         aliquotaOrigem = 17;
@@ -86,9 +86,10 @@ function calculoSimples() { // funçao para calcular o valor do ICMS
 
     var calculo = base * (valorOrigem / 100); // calculo do valor devido do ICMS simples
 
-    document.querySelector('#resultado').innerHTML = `<table>\
+    document.querySelector('#resultado').innerHTML = `\
+    <table>\
     <tr>\
-    <td>Base de Cálculo:</td>\
+    <td>Valor do Produto:</td>\
     <td>R$ ${base}</td>\
     </tr>\
     <tr>\
@@ -107,7 +108,14 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
 
     document.querySelector('#interestadual').checked = true; // verificar 'radio' checked
 
-    document.querySelector('#app').innerHTML = '<input type="number" name="base" id="base" placeholder="Base de Cálculo"/></br>\
+    document.querySelector('#app').innerHTML = '\
+        <input type="number" name="base" id="base" placeholder="Valor do Produto"/></br>\
+        <input type="number" name="ipi" id="ipi" placeholder="Valor do IPI"/>\
+        <input type="number" name="frete" id="frete" placeholder="Valor do Frete"/>\
+        <input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro"/>\
+        <input type="number" name="despesas" id="despesas" placeholder="Outras Despesas"/>\
+        <input type="number" name="desconto" id="desconto" placeholder="Descontos"/>\
+        <input type="number" name="mva" id="mva" placeholder="MVA %"/>\
         <input type="text" name="origem" id="origem" placeholder="Estado Origem"/>\
         <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
         <option value="">UF</option>\
@@ -180,7 +188,8 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
 
     if (document.querySelector('#simples').checked = true) { // verificar 'radio' checked
 
-        document.querySelector('#app').innerHTML = '<input type="number" name="base" id="base" placeholder="Base de Cálculo"/></br>\
+        document.querySelector('#app').innerHTML = '\
+            <input type="number" name="base" id="base" placeholder="Valor do Produto"/></br>\
             <input type="text" name="origem" id="origem" placeholder="Estado"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
             <option value="">UF</option>\
@@ -218,7 +227,8 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
 
     } else if (document.querySelector('#interestadual').checked = true) {
 
-        document.querySelector('#app').innerHTML = '<input type="number" name="base" id="base" placeholder="Base de Cálculo"/></br>\
+        document.querySelector('#app').innerHTML = '\
+            <input type="number" name="base" id="base" placeholder="Valor do Produto"/></br>\
             <input type="text" name="origem" id="origem" placeholder="Estado"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
             <option value="">UF</option>\
@@ -268,7 +278,7 @@ function carregarDestino() { // funçao para mostrar no elemento 'input' o valor
 
     var aliquotaDestino = 0;
 
-    var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option'no html
+    var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
     if (destinoText === 'AC') {
         aliquotaDestino = 17;
@@ -335,10 +345,10 @@ function carregarDestino() { // funçao para mostrar no elemento 'input' o valor
 function interestadual() {
 
     var origemSelect = document.querySelector('#origemSelect'); //console.log(origemSelect[2].text); tag 'select' pode ser usada com index
-    var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option'no html
+    var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
     var destinoSelect = document.querySelector('#destinoSelect'); //console.log(origemSelect[2].text); tag 'select' pode ser usada com index
-    var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option'no html
+    var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
     aliquotaInter = 0;
     
@@ -1810,16 +1820,64 @@ function interestadual() {
 
 function calculoComplemento() { // funçao para calcular o valor do ICMS ST
 
-    var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option'no html
+    var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
-    var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option'no html
+    var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
     var base = document.querySelector('#base').value; // valor do elemento 'input' com id '#base' (valor para base de calculo)
+    
+    var ipi = document.querySelector('#ipi').value; // valor do elemento 'input' com id '#ipi' (valor do ipi)
+    
+    var frete = document.querySelector('#frete').value; // valor do elemento 'input' com id '#frete' (valor do frete)
+    
+    var seguro = document.querySelector('#seguro').value; // valor do elemento 'input' com id '#seguro' (valor do seguro)
+    
+    var despesa = document.querySelector('#despesa').value; // valor do elemento 'input' com id '#despesa' (valor das despesas)
+    
+    var desconto = document.querySelector('#desconto').value; // valor do elemento 'input' com id '#desconto' (valor dos descontos)
+    
+    var mva = document.querySelector('#mva').value; // valor do elemento 'input' com id '#mva' (valor da aliquota de MVA)
 
     valorOrigem = carregarOrigem(); // valor da aliquota de origem
 
     valorDestino = carregarDestino(); // valor da aliquota de destino
 
     valorInter = interestadual(); // valor da aliquota interestadual
+    
+    calculoBaseInter = (base + frete + seguro + despesa - desconto); // base de calculo para o valor do ICMS
+    
+    valorICMS = calculoBase * (valorInter / 100); // valor do ICMS
+    
+    calculoBaseST = (base + ipi + frete + seguro + despesa - desconto) * (1 + (mva / 100)); // base de calculo para o valor do ICMS ST
+    
+    valorST = (calculoBaseST * (valorDestino / 100)) - valorICMS; // valor do ICMS ST
+    
+    document.querySelector('#resultado').innerHTML = `\
+    <table>\
+    <tr>\
+    <td>Valor do Produto:</td>\
+    <td>R$ ${base}</td>\
+    <td>Valor do IPI:</td>\
+    <td>R$ ${ipi}</td>\
+    <td>Valor do Frete:</td>\
+    <td>R$ ${frete}</td>\
+    <td>Valor das Despesas:</td>\
+    <td>R$ ${despesa}</td>\
+    <td>Valor dos Descontos:</td>\
+    <td>R$ ${desconto}</td>\
+    <td>Alíquota MVA:</td>\
+    <td>${mva}%</td>\
+    <td>Alíquota ${origemText}:</td>\
+    <td>${valorOrigem}%</td>\
+    <td>Alíquota ${destinoText}:</td>\
+    <td>${valorDestino}%</td>\
+    <td>Alíquota InterEstadual:</td>\
+    <td>${valorInter}%</td>\
+    <td>Base de Cálculo:</td>\
+    <td>R$ ${calculoBaseST}</td>\
+    <td>Valor do ICMS ST:</td>\
+    <td>R$ ${valorST}</td>\
+    </tr>\
+    </table>`; // elemento 'table' do html com os resultados
 
 };
