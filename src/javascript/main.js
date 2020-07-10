@@ -3,7 +3,7 @@ Criado em 07/2020
 @Autor: Paulo https://github.com/alpdias
 */
 
-simples(); // gambiarra para limpar html e JS da tela ao recarregar a pagina 
+simples(); // gambiarra para limpar o html e JS da tela ao recarregar a pagina 
 
 function carregarOrigem() { // funçao para mostrar no elemento 'input' o valor selecionado e definir o valor
 
@@ -78,9 +78,28 @@ function carregarOrigem() { // funçao para mostrar no elemento 'input' o valor 
 
 function calculoSimples() { // funçao para calcular o valor do ICMS
 
+    var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option'no html
+
     var base = document.querySelector('#base').value; // valor do elemento 'input' com id '#base' (valor para base de calculo)
 
     valorOrigem = carregarOrigem(); // valor da aliquota de origem
+
+    var calculo = base * (valorOrigem / 100); // calculo do valor devido do ICMS simples
+
+    document.querySelector('#resultado').innerHTML = `<table>\
+    <tr>\
+    <td>Base de Cálculo:</td>\
+    <td>R$ ${base}</td>\
+    </tr>\
+    <tr>\
+    <td>Alíquota ${origemText}:</td>\
+    <td>${valorOrigem}%</td>\
+    </tr>\
+    <tr>\
+    <td>Valor do ICMS:</td>\
+    <td>R$ ${calculo}</td>\
+    </tr>\
+    </table>`; // elemento 'table' do html com os resultados
 
 };
 
@@ -1791,10 +1810,16 @@ function interestadual() {
 
 function calculoComplemento() { // funçao para calcular o valor do ICMS ST
 
+    var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option'no html
+
+    var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option'no html
+
     var base = document.querySelector('#base').value; // valor do elemento 'input' com id '#base' (valor para base de calculo)
 
     valorOrigem = carregarOrigem(); // valor da aliquota de origem
 
     valorDestino = carregarDestino(); // valor da aliquota de destino
+
+    valorInter = interestadual(); // valor da aliquota interestadual
 
 };
