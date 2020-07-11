@@ -84,7 +84,7 @@ function calculoSimples() { // funçao para calcular o valor do ICMS
 
     valorOrigem = carregarOrigem(); // valor da aliquota de origem
 
-    var calculo = base * (valorOrigem / 100); // calculo do valor devido do ICMS simples
+    var calculo = parseInt(base) * (parseInt(valorOrigem) / 100); // calculo do valor devido do ICMS simples
 
     if (base === '' && origemText === 'UF') {
 
@@ -1850,16 +1850,52 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
     var base = document.querySelector('#base').value; // valor do elemento 'input' com id '#base' (valor para base de calculo)
     
     var ipi = document.querySelector('#ipi').value; // valor do elemento 'input' com id '#ipi' (valor do ipi)
+
+    if (ipi === '') {
+        ipi = 0;
+    } else {
+        ipi = ipi;
+    };
     
     var frete = document.querySelector('#frete').value; // valor do elemento 'input' com id '#frete' (valor do frete)
+
+    if (frete === '') {
+        frete = 0;
+    } else {
+        frete = frete;
+    };
     
     var seguro = document.querySelector('#seguro').value; // valor do elemento 'input' com id '#seguro' (valor do seguro)
+
+    if (seguro === '') {
+        seguro = 0;
+    } else {
+        seguro = seguro;
+    };
     
     var despesa = document.querySelector('#despesa').value; // valor do elemento 'input' com id '#despesa' (valor das despesas)
+
+    if (despesa === '') {
+        despesa = 0;
+    } else {
+        despesa = despesa;
+    };
     
     var desconto = document.querySelector('#desconto').value; // valor do elemento 'input' com id '#desconto' (valor dos descontos)
+
+    if (desconto === '') {
+        desconto = 0;
+    } else {
+        desconto = desconto;
+    };
     
     var mva = document.querySelector('#mva').value; // valor do elemento 'input' com id '#mva' (valor da aliquota de MVA)
+
+    if (mva === '') {
+        mva = -0;
+    } else {
+        mva = mva;
+    };
 
     valorOrigem = carregarOrigem(); // valor da aliquota de origem
 
@@ -1889,13 +1925,15 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
 
     } else {
 
-        calculoBaseInter = (base + frete + seguro + despesa - desconto); // base de calculo para o valor do ICMS
+        calculoBaseInter = (parseInt(base) + parseInt(frete) + parseInt(seguro) + parseInt(despesa) - parseInt(desconto)); // base de calculo para o valor do ICMS
+
+        console.log(calculoBaseInter);
     
-        valorICMS = calculoBaseInter * (valorInter / 100); // valor do ICMS
+        valorICMS = calculoBaseInter * (parseInt(valorInter) / 100); // valor do ICMS
         
-        calculoBaseST = (base + ipi + frete + seguro + despesa - desconto) * (1 + (mva / 100)); // base de calculo para o valor do ICMS ST
+        calculoBaseST = (parseInt(base) + parseInt(ipi) + parseInt(frete) + parseInt(seguro) + parseInt(despesa) - parseInt(desconto)) * (1 + (parseInt(mva) / 100)); // base de calculo para o valor do ICMS ST
         
-        valorST = (calculoBaseST * (valorDestino / 100)) - valorICMS; // valor do ICMS ST
+        valorST = (calculoBaseST * (parseInt(valorDestino) / 100)) - valorICMS; // valor do ICMS ST
         
         document.querySelector('#resultado').innerHTML = `\
             <table>\
