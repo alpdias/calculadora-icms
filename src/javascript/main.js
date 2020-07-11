@@ -82,7 +82,7 @@ function calculoSimples() { // funçao para calcular o valor do ICMS
 
     var base = document.querySelector('#base').value; // valor do elemento 'input' com id '#base' (valor para base de calculo)
 
-    valorOrigem = carregarOrigem(); // valor da aliquota de origem
+    var valorOrigem = carregarOrigem(); // valor da aliquota de origem
 
     var calculo = parseInt(base) * (parseInt(valorOrigem) / 100); // calculo do valor devido do ICMS simples
 
@@ -1897,11 +1897,11 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
         mva = mva;
     };
 
-    valorOrigem = carregarOrigem(); // valor da aliquota de origem
+    var valorOrigem = carregarOrigem(); // valor da aliquota de origem
 
-    valorDestino = carregarDestino(); // valor da aliquota de destino
+    var valorDestino = carregarDestino(); // valor da aliquota de destino
 
-    valorInter = interestadual(); // valor da aliquota interestadual
+    var valorInter = interestadual(); // valor da aliquota interestadual
 
     if (base === '' && origemText === 'UF' && destinoText === 'UF') {
 
@@ -1925,16 +1925,14 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
 
     } else {
 
-        calculoBaseInter = (parseInt(base) + parseInt(frete) + parseInt(seguro) + parseInt(despesa) - parseInt(desconto)); // base de calculo para o valor do ICMS
-
-        console.log(calculoBaseInter);
+        var calculoBaseInter = (parseInt(base) + parseInt(frete) + parseInt(seguro) + parseInt(despesa) - parseInt(desconto)); // base de calculo para o valor do ICMS
     
-        valorICMS = calculoBaseInter * (parseInt(valorInter) / 100); // valor do ICMS
+        var valorICMS = calculoBaseInter * (parseInt(valorInter) / 100); // valor do ICMS
         
-        calculoBaseST = (parseInt(base) + parseInt(ipi) + parseInt(frete) + parseInt(seguro) + parseInt(despesa) - parseInt(desconto)) * (1 + (parseInt(mva) / 100)); // base de calculo para o valor do ICMS ST
+        var calculoBaseST = (parseInt(base) + parseInt(ipi) + parseInt(frete) + parseInt(seguro) + parseInt(despesa) - parseInt(desconto)) * (1 + (parseInt(mva) / 100)); // base de calculo para o valor do ICMS ST
         
-        valorST = (calculoBaseST * (parseInt(valorDestino) / 100)) - valorICMS; // valor do ICMS ST
-        
+        var valorST = (calculoBaseST * (parseInt(valorDestino) / 100)) - valorICMS; // valor do ICMS ST
+
         document.querySelector('#resultado').innerHTML = `\
             <table>\
             <tr>\
