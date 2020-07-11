@@ -11,8 +11,8 @@ Criado em 07/2020
     <body>
         <h1>Calculadora de ICMS</h1>
         <div id="app">
-            <input type="number" name="base" id="base" placeholder="Valor do Produto"/></br>
-            <input type="text" name="origem" id="origem" placeholder="Estado"/>
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto"/></div></br>
+            <div>UF<input type="text" name="origem" id="origem" placeholder="Estado"/>
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">
                 <option value="">UF</option>
                 <option value="Acre">AC</option>
@@ -42,12 +42,30 @@ Criado em 07/2020
                 <option value="São Paulo">SP</option>
                 <option value="Sergipe">SE</option>
                 <option value="Tocantins">TO</option>
-            </select></br>
+            </select></div></br>
             <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>
             <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>
             <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>
         </div>
         <div id="resultado"></div>
+        <div id="resumo">
+            <h1>O que é o ICMS?</h1>
+            <p>O ICMS (Imposto sobre Circulação de Mercadorias e Serviços) é um imposto estadual que incide
+                sobre a venda e o transporte de produtos comercializados no país ou mesmo importados. Ele é 
+                cobrado de forma indireta, ou seja, seu valor é adicionado ao preço do produto ou serviço. Seu fato 
+                gerador acontece na troca de titularidade de um bem ou serviço para o comprador final.</p>
+            <p>A regulamentação deste imposto é de responsabilidade de cada Estado e do Distrito Federal, que estipulam 
+                a porcentagem cobrada em suas regiões de atuação. Assim, cada localidade possui sua própria tarifa, para 
+                cada uma das unidades federativas (UF).</p>
+            <h1>Como calcular o ICMS?</h1>
+            <p>Primeiro, é necessário saber qual alíquota incide no estado em que sua empresa atua. Em uma 
+                situação normal, no qual a venda é efetuada dentro da mesma UF, o cálculo é simples:
+            <p>Valor do Produto X Alíquota do Estado = Valor do ICMS</p>
+            <p>Ex.: Um produto custa R$ 1.000,00 reais e sobre ele incide a alíquota de 18% (valor aplicado em vários 
+                estados como São Paulo, Bahia e Paraná), o cálculo seria o seguinte:</p>
+            <p>R$ 1.000,00 X 18% = R$ 180,00</p>  
+            <p>Ou seja, neste caso o valor do ICMS deste produto seria de R$ 180,00, totalizando R$ 1.180,00.</p>
+        </div>
         <script src="javascript/main.js"></script>
     </body>
 </html>

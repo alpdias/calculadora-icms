@@ -86,23 +86,39 @@ function calculoSimples() { // funçao para calcular o valor do ICMS
 
     var calculo = base * (valorOrigem / 100); // calculo do valor devido do ICMS simples
 
-    document.querySelector('#resultado').innerHTML = `\
-    <table>\
-    <tr>\
-    <td>Valor do Produto:</td>\
-    <td>R$ ${base}</td>\
-    </tr>\
-    <tr>\
-    <td>Alíquota ${origemText}:</td>\
-    <td>${valorOrigem}%</td>\
-    </tr>\
-    <tr>\
-    <td>Valor do ICMS:</td>\
-    <td>R$ ${calculo}</td>\
-    </tr>\
-    </table>
-    <button name="novo" id="novo">Recalcular</button>`; // elemento 'table' do html com os resultados
+    if (base === '' && origemText === 'UF') {
 
+        window.alert('Preencha todos os campos!');
+
+    } else if (base === '') {
+
+        window.alert('Preencha o "Valor do Produto"!');
+
+    } else if (origemText === 'UF') {
+
+        window.alert('Selecione uma UF!');
+
+    } else {
+
+        document.querySelector('#resultado').innerHTML = `\
+            <table>\
+            <tr>\
+            <td>Valor do Produto:</td>\
+            <td>R$ ${base}</td>\
+            </tr>\
+            <tr>\
+            <td>Alíquota ${origemText}:</td>\
+            <td>${valorOrigem}%</td>\
+            </tr>\
+            <tr>\
+            <td>Valor do ICMS:</td>\
+            <td>R$ ${calculo}</td>\
+            </tr>\
+            </table>
+            <button name="novo" id="novo" onclick="simples()">Recalcular</button>`; // elemento 'table' do html com os resultados
+
+    };
+    
 };
 
 function complemento() { // funçao para verificar se o elemento 'radio' no html esta preenchido e inserir o novo html
@@ -110,14 +126,14 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
     document.querySelector('#interestadual').checked = true; // verificar 'radio' checked
 
     document.querySelector('#app').innerHTML = '\
-        <input type="number" name="base" id="base" placeholder="Valor do Produto"/></br>\
-        <input type="number" name="ipi" id="ipi" placeholder="Valor do IPI"/></br>\
-        <input type="number" name="frete" id="frete" placeholder="Valor do Frete"/></br>\
-        <input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro"/></br>\
-        <input type="number" name="despesa" id="despesa" placeholder="Outras Despesas"/></br>\
-        <input type="number" name="desconto" id="desconto" placeholder="Descontos"/></br>\
-        <input type="number" name="mva" id="mva" placeholder="MVA %"/></br>\
-        <input type="text" name="origem" id="origem" placeholder="Estado Origem"/>\
+        <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto"/></div></br>\
+        <div>R$<input type="number" name="ipi" id="ipi" placeholder="Valor do IPI"/></div></br>\
+        <div>R$<input type="number" name="frete" id="frete" placeholder="Valor do Frete"/></div></br>\
+        <div>R$<input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro"/></div></br>\
+        <div>R$<input type="number" name="despesa" id="despesa" placeholder="Outras Despesas"/></div></br>\
+        <div>R$<input type="number" name="desconto" id="desconto" placeholder="Descontos"/></div></br>\
+        <div>%<input type="number" name="mva" id="mva" placeholder="MVA %"/></div></br>\
+        <div>UF<input type="text" name="origem" id="origem" placeholder="Estado Origem"/>\
         <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
         <option value="">UF</option>\
         <option value="Acre">AC</option>\
@@ -147,8 +163,8 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
         <option value="São Paulo">SP</option>\
         <option value="Sergipe">SE</option>\
         <option value="Tocantins">TO</option>\
-        </select></br>\
-        <input type="text" name="destino" id="destino" placeholder="Estado Destino">\
+        </select></div></br>\
+        <div>UF<input type="text" name="destino" id="destino" placeholder="Estado Destino">\
         <select name="destinoSelect" id="destinoSelect" onclick="carregarDestino()">\
         <option value="">UF</option>\
         <option value="Acre">AC</option>\
@@ -178,7 +194,7 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
         <option value="São Paulo">SP</option>\
         <option value="Sergipe">SE</option>\
         <option value="Tocantins">TO</option>\
-        </select></br>\
+        </select></div></br>\
         <button name="calcular" id="calcular" onclick="calculoComplemento()">Calcular</button>\
         <input type="radio" name="Inter" id="simples" onclick="simples()"/><label for="simples">ICMS</label>\
         <input type="radio" name="Inter" id="interestadual" checked onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
@@ -192,8 +208,8 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
     if (document.querySelector('#simples').checked = true) { // verificar 'radio' checked
 
         document.querySelector('#app').innerHTML = '\
-            <input type="number" name="base" id="base" placeholder="Valor do Produto"/></br>\
-            <input type="text" name="origem" id="origem" placeholder="Estado"/>\
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto"/></div></br>\
+            <div>UF<input type="text" name="origem" id="origem" placeholder="Estado"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
             <option value="">UF</option>\
             <option value="Acre">AC</option>\
@@ -223,7 +239,7 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
             <option value="São Paulo">SP</option>\
             <option value="Sergipe">SE</option>\
             <option value="Tocantins">TO</option>\
-            </select></br>\
+            </select></div></br>\
             <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>\
             <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>\
             <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
@@ -233,8 +249,8 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
     } else if (document.querySelector('#interestadual').checked = true) {
 
         document.querySelector('#app').innerHTML = '\
-            <input type="number" name="base" id="base" placeholder="Valor do Produto"/></br>\
-            <input type="text" name="origem" id="origem" placeholder="Estado"/>\
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto"/></div></br>\
+            <div>UF<input type="text" name="origem" id="origem" placeholder="Estado"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
             <option value="">UF</option>\
             <option value="Acre">AC</option>\
@@ -264,7 +280,7 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
             <option value="São Paulo">SP</option>\
             <option value="Sergipe">SE</option>\
             <option value="Tocantins">TO</option>\
-            </select></br>\
+            </select></div></br>\
             <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>\
             <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>\
             <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
@@ -1850,62 +1866,86 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
     valorDestino = carregarDestino(); // valor da aliquota de destino
 
     valorInter = interestadual(); // valor da aliquota interestadual
-    
-    calculoBaseInter = (base + frete + seguro + despesa - desconto); // base de calculo para o valor do ICMS
-    
-    valorICMS = calculoBaseInter * (valorInter / 100); // valor do ICMS
-    
-    calculoBaseST = (base + ipi + frete + seguro + despesa - desconto) * (1 + (mva / 100)); // base de calculo para o valor do ICMS ST
-    
-    valorST = (calculoBaseST * (valorDestino / 100)) - valorICMS; // valor do ICMS ST
-    
-    document.querySelector('#resultado').innerHTML = `\
-    <table>\
-    <tr>\
-    <td>Valor do Produto:</td>\
-    <td>R$ ${base}</td>\
-    </tr>\
-    <tr>\
-    <td>Valor do IPI:</td>\
-    <td>R$ ${ipi}</td>\
-    </tr>\
-    <tr>\
-    <td>Valor do Frete:</td>\
-    <td>R$ ${frete}</td>\
-    </tr>\
-    <tr>\
-    <td>Valor das Despesas:</td>\
-    <td>R$ ${despesa}</td>\
-    </tr>\
-    <tr>\
-    <td>Valor dos Descontos:</td>\
-    <td>R$ ${desconto}</td>\
-    </tr>\
-    <tr>\
-    <td>Alíquota MVA:</td>\
-    <td>${mva}%</td>\
-    </tr>\
-    <tr>\
-    <td>Alíquota ${origemText}:</td>\
-    <td>${valorOrigem}%</td>\
-    </tr>\
-    <tr>\
-    <td>Alíquota ${destinoText}:</td>\
-    <td>${valorDestino}%</td>\
-    </tr>\
-    <tr>\
-    <td>Alíquota InterEstadual:</td>\
-    <td>${valorInter}%</td>\
-    </tr>\
-    <tr>\
-    <td>Base de Cálculo:</td>\
-    <td>R$ ${calculoBaseST}</td>\
-    </tr>\
-    <tr>\
-    <td>Valor do ICMS ST:</td>\
-    <td>R$ ${valorST}</td>\
-    </tr>\
-    </table>
-    <button name="novo" id="novo">Recalcular</button>`; // elemento 'table' do html com os resultados
 
+    if (base === '' && origemText === 'UF' && destinoText === 'UF') {
+
+        window.alert('Preencha pelo menos o "Valor do Produto" e selecione a UF de origem e destino!');
+
+    } else if (base === '') {
+
+        window.alert('Preencha o "Valor do Produto"!');
+
+    } else if (origemText === 'UF' && destinoText === 'UF') {
+
+        window.alert('Selecione a UF de origem e destino!');
+
+    } else if (origemText === 'UF') {
+
+        window.alert('Selecione a UF de origem!');
+
+    } else if (destinoText === 'UF') {
+
+        window.alert('Selecione a UF de destino!');
+
+    } else {
+
+        calculoBaseInter = (base + frete + seguro + despesa - desconto); // base de calculo para o valor do ICMS
+    
+        valorICMS = calculoBaseInter * (valorInter / 100); // valor do ICMS
+        
+        calculoBaseST = (base + ipi + frete + seguro + despesa - desconto) * (1 + (mva / 100)); // base de calculo para o valor do ICMS ST
+        
+        valorST = (calculoBaseST * (valorDestino / 100)) - valorICMS; // valor do ICMS ST
+        
+        document.querySelector('#resultado').innerHTML = `\
+            <table>\
+            <tr>\
+            <td>Valor do Produto:</td>\
+            <td>R$ ${base}</td>\
+            </tr>\
+            <tr>\
+            <td>Valor do IPI:</td>\
+            <td>R$ ${ipi}</td>\
+            </tr>\
+            <tr>\
+            <td>Valor do Frete:</td>\
+            <td>R$ ${frete}</td>\
+            </tr>\
+            <tr>\
+            <td>Valor das Despesas:</td>\
+            <td>R$ ${despesa}</td>\
+            </tr>\
+            <tr>\
+            <td>Valor dos Descontos:</td>\
+            <td>R$ ${desconto}</td>\
+            </tr>\
+            <tr>\
+            <td>Alíquota MVA:</td>\
+            <td>${mva}%</td>\
+            </tr>\
+            <tr>\
+            <td>Alíquota ${origemText}:</td>\
+            <td>${valorOrigem}%</td>\
+            </tr>\
+            <tr>\
+            <td>Alíquota ${destinoText}:</td>\
+            <td>${valorDestino}%</td>\
+            </tr>\
+            <tr>\
+            <td>Alíquota InterEstadual:</td>\
+            <td>${valorInter}%</td>\
+            </tr>\
+            <tr>\
+            <td>Base de Cálculo:</td>\
+            <td>R$ ${calculoBaseST}</td>\
+            </tr>\
+            <tr>\
+            <td>Valor do ICMS ST:</td>\
+            <td>R$ ${valorST}</td>\
+            </tr>\
+            </table>
+            <button name="novo" id="novo" onclick="complemento()">Recalcular</button>`; // elemento 'table' do html com os resultados
+
+    };
+    
 };
