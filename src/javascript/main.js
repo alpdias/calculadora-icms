@@ -126,14 +126,14 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
     document.querySelector('#interestadual').checked = true; // verificar 'radio' checked
 
     document.querySelector('#app').innerHTML = '\
-        <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto"/></div></br>\
-        <div>R$<input type="number" name="ipi" id="ipi" placeholder="Valor do IPI"/></div></br>\
-        <div>R$<input type="number" name="frete" id="frete" placeholder="Valor do Frete"/></div></br>\
-        <div>R$<input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro"/></div></br>\
-        <div>R$<input type="number" name="despesa" id="despesa" placeholder="Outras Despesas"/></div></br>\
-        <div>R$<input type="number" name="desconto" id="desconto" placeholder="Descontos"/></div></br>\
-        <div>%<input type="number" name="mva" id="mva" placeholder="MVA %"/></div></br>\
-        <div>UF<input type="text" name="origem" id="origem" placeholder="Estado Origem"/>\
+        <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off"/></div></br>\
+        <div>R$<input type="number" name="ipi" id="ipi" placeholder="Valor do IPI" autocomplete="off"/></div></br>\
+        <div>R$<input type="number" name="frete" id="frete" placeholder="Valor do Frete" autocomplete="off"/></div></br>\
+        <div>R$<input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro" autocomplete="off"/></div></br>\
+        <div>R$<input type="number" name="despesa" id="despesa" placeholder="Outras Despesas" autocomplete="off"/></div></br>\
+        <div>R$<input type="number" name="desconto" id="desconto" placeholder="Descontos" autocomplete="off"/></div></br>\
+        <div>%<input type="number" name="mva" id="mva" placeholder="MVA %" autocomplete="off"/></div></br>\
+        <div>UF<input type="text" name="origem" id="origem" placeholder="Estado Origem" autocomplete="off"/>\
         <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
         <option value="">UF</option>\
         <option value="Acre">AC</option>\
@@ -164,7 +164,7 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
         <option value="Sergipe">SE</option>\
         <option value="Tocantins">TO</option>\
         </select></div></br>\
-        <div>UF<input type="text" name="destino" id="destino" placeholder="Estado Destino">\
+        <div>UF<input type="text" name="destino" id="destino" placeholder="Estado Destino" autocomplete="off"/>\
         <select name="destinoSelect" id="destinoSelect" onclick="carregarDestino()">\
         <option value="">UF</option>\
         <option value="Acre">AC</option>\
@@ -208,8 +208,8 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
     if (document.querySelector('#simples').checked = true) { // verificar 'radio' checked
 
         document.querySelector('#app').innerHTML = '\
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto"/></div></br>\
-            <div>UF<input type="text" name="origem" id="origem" placeholder="Estado"/>\
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off"/></div></br>\
+            <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
             <option value="">UF</option>\
             <option value="Acre">AC</option>\
@@ -249,8 +249,8 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
     } else if (document.querySelector('#interestadual').checked = true) {
 
         document.querySelector('#app').innerHTML = '\
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto"/></div></br>\
-            <div>UF<input type="text" name="origem" id="origem" placeholder="Estado"/>\
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off"/></div></br>\
+            <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
             <option value="">UF</option>\
             <option value="Acre">AC</option>\
