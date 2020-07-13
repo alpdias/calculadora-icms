@@ -11,7 +11,7 @@ Criado em 07/2020
     <body>
         <h1>Calculadora de ICMS</h1>
         <div id="app">
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off"/></div></br>
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></div></br>
             <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">
                 <option value="">UF</option>
@@ -75,19 +75,21 @@ Criado em 07/2020
                 fiscalização dos tributos.</p>
             <h1>Como calcular o ICMS-ST?</h1>
             <p>Primeiro temos que calcular o ICMS próprio, ou seja, aquele ICMS que o estabelecimento 
-                emissor da NF recolheria. No cálculo do ICMS ST, o ICMS próprio é mais conhecido como ICMS interestadual. 
+                emissor da NF recolheria. No cálculo do ICMS-ST, o ICMS próprio é mais conhecido como ICMS interestadual. 
                 Vamos usar a fórmula abaixo para o cálculo:</p>
             <p><strong>Base do ICMS Interestadual = (Valor do produto + Frete + Seguro + Outras Despesas - Descontos)</strong></p>
             <p><strong>Valor do ICMS Interestadual = Base ICMS Interestadual * (Alíquota ICMS Interestadual / 100)</strong></p>
-            <p>Agora temos que fazer o cálculo para encontrar a Base do ICMS ST:</p>
-            <p><strong>Base do ICMS ST = (Valor do produto + Valor do IPI + Frete + Seguro + Outras Despesas - Descontos) * (1 + (%MVA / 100))</strong></p>
+            <p>Agora temos que fazer o cálculo para encontrar a Base do ICMS-ST:</p>
+            <p><strong>Base do ICMS-ST = (Valor do produto + Valor do IPI + Frete + Seguro + Outras Despesas - Descontos) * (1 + (%MVA / 100))</strong></p>
             <p>Perceba que nesta etapa do cálculo foi incluindo o um detalhe importante, o MVA (Margem de Valor Agregado). Que é a 
                 margem de lucro que o governo estima ser aplicada desde o momento que a mercadoria saiu da fábrica, contando com 
                 a margem do distribuidor e também de quem venderá para o consumidor final.</p>
-            <p>E agora estamos preparados para calcular o valor do ICMS ST:</p>
-            <p><strong>Valor do ICMS ST = (Base do ICMS ST * (Alíquota do ICMS Interno / 100)) - Valor do ICMS Interestadual</strong></p>
+            <p>E agora estamos preparados para calcular o valor do ICMS-ST:</p>
+            <p><strong>Valor do ICMS-ST = (Base do ICMS-ST * (Alíquota do ICMS Interno / 100)) - Valor do ICMS Interestadual</strong></p>
             <p>A alíquota do ICMS Interno é a alíquota de ICMS aplicada dentro do estado de destino. É a alíquota 
                 na qual a empresa que está comprando a mercadoria usaria para vender no seu próprio estado.</p>
+            <h1>Tabela do ICMS</h1>
+            <img src="../img/tabela-icms-inter.jpg" alt="Tabela do ICMS Interestadual" id="tabela">
             <div id="tag">
                 <p>#icms #icms-st #substiuiçaotributaria #interestadual #aliquota #aliquotainterna #calculo #calculadoradeicms #icmsinterestadual</p>
             </div>

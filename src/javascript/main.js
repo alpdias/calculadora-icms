@@ -17,7 +17,7 @@ function carregarOrigem() { // funçao para mostrar no elemento 'input' o valor 
     if (origemText === 'AC') {
         aliquotaOrigem = 17;
     } else if (origemText === 'AL') {
-        aliquotaOrigem = 17;
+        aliquotaOrigem = 18;
     } else if (origemText === 'AP') {
         aliquotaOrigem = 18;
     } else if (origemText === 'AM') {
@@ -115,7 +115,9 @@ function calculoSimples() { // funçao para calcular o valor do ICMS
             <td>R$ ${calculo}</td>\
             </tr>\
             </table>
-            <button name="novo" id="novo" onclick="simples()">Recalcular</button>`; // elemento 'table' do html com os resultados
+            <button name="novo" id="novo" onclick="simples()">Recalcular</button>\
+            <p><strong>Memória de Cálculo:</strong></p>\
+            <p>Valor do ICMS = ${base} x ${valorOrigem}% = ${calculo}</p>`; // elemento 'table' e 'p' do html com os resultados
 
     };
     
@@ -126,13 +128,13 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
     document.querySelector('#interestadual').checked = true; // verificar 'radio' checked
 
     document.querySelector('#app').innerHTML = '\
-        <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off"/></div></br>\
-        <div>R$<input type="number" name="ipi" id="ipi" placeholder="Valor do IPI" autocomplete="off"/></div></br>\
-        <div>R$<input type="number" name="frete" id="frete" placeholder="Valor do Frete" autocomplete="off"/></div></br>\
-        <div>R$<input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro" autocomplete="off"/></div></br>\
-        <div>R$<input type="number" name="despesa" id="despesa" placeholder="Outras Despesas" autocomplete="off"/></div></br>\
-        <div>R$<input type="number" name="desconto" id="desconto" placeholder="Descontos" autocomplete="off"/></div></br>\
-        <div>%<input type="number" name="mva" id="mva" placeholder="MVA %" autocomplete="off"/></div></br>\
+        <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></div></br>\
+        <div>R$<input type="number" name="ipi" id="ipi" placeholder="Valor do IPI" autocomplete="off" inputmode="numeric"/></div></br>\
+        <div>R$<input type="number" name="frete" id="frete" placeholder="Valor do Frete" autocomplete="off" inputmode="numeric"/></div></br>\
+        <div>R$<input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro" autocomplete="off" inputmode="numeric"/></div></br>\
+        <div>R$<input type="number" name="despesa" id="despesa" placeholder="Outras Despesas" autocomplete="off" inputmode="numeric"/></div></br>\
+        <div>R$<input type="number" name="desconto" id="desconto" placeholder="Descontos" autocomplete="off" inputmode="numeric"/></div></br>\
+        <div>%<input type="number" name="mva" id="mva" placeholder="MVA %" autocomplete="off" inputmode="numeric"/></div></br>\
         <div>UF<input type="text" name="origem" id="origem" placeholder="Estado Origem" autocomplete="off"/>\
         <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
         <option value="">UF</option>\
@@ -208,7 +210,7 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
     if (document.querySelector('#simples').checked = true) { // verificar 'radio' checked
 
         document.querySelector('#app').innerHTML = '\
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off"/></div></br>\
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></div></br>\
             <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
             <option value="">UF</option>\
@@ -249,7 +251,7 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
     } else if (document.querySelector('#interestadual').checked = true) {
 
         document.querySelector('#app').innerHTML = '\
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off"/></div></br>\
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></div></br>\
             <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
             <option value="">UF</option>\
@@ -306,7 +308,7 @@ function carregarDestino() { // funçao para mostrar no elemento 'input' o valor
     if (destinoText === 'AC') {
         aliquotaDestino = 17;
     } else if (destinoText === 'AL') {
-        aliquotaDestino = 17;
+        aliquotaDestino = 18;
     } else if (destinoText === 'AP') {
         aliquotaDestino = 18;
     } else if (destinoText === 'AM') {
@@ -1980,7 +1982,13 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
             <td>R$ ${valorST}</td>\
             </tr>\
             </table>
-            <button name="novo" id="novo" onclick="complemento()">Recalcular</button>`; // elemento 'table' do html com os resultados
+            <button name="novo" id="novo" onclick="complemento()">Recalcular</button>
+            <p><strong>Memória de Cálculo:</strong></p>\
+            <p>Base do ICMS Interestadual = (${base} + ${frete} + ${seguro} + ${despesa} - ${desconto})</p>\
+            <p>Valor do ICMS Interestadual = ${calculoBaseInter} x (${valorInter}% / 100)</p>\
+            <p>Base do ICMS-ST = (${base} + ${ipi} + ${frete} + ${seguro} + ${despesa} - ${desconto}) x (1 + (${mva}% / 100))</p>
+            <p>Valor do ICMS-ST = (${calculoBaseST} x (${valorDestino}% / 100)) - ${valorICMS}</p>
+            <p>Valor do ICMS-ST = ${valorST}</p>`; // elemento 'table' e 'p' do html com os resultados
 
     };
     
