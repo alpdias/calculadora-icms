@@ -1,4 +1,4 @@
-# Calculadora de ICMS em JS
+# Calculadora de ICMS
 
 Website criado para realizar de maneira simples e rápida o cálculo de imposto de ICMS, mostrando também a memória de cálculo utilizada e uma explicação básica sobre o ICMS, o website foi criado utilizando JavaScript, HTML5 e CSS3.
 
@@ -14,7 +14,7 @@ pt-BR </br>
 
 ---------------------------------------------------------------------------------------------
 
-# ICMS calculator in JS
+# ICMS calculator
 
 Website created to easily and quickly calculate the ICMS tax, also showing the calculation memory used and a basic explanation of the ICMS, the website was created using JavaScript, HTML5 and CSS3.
 
