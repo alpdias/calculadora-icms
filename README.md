@@ -14,7 +14,7 @@ pt-BR </br>
 
 # ICMS calculator
 
-Website created to easily and quickly calculate the ICMS tax, showing the calculation memory used and a basic explanation of the ICMS, the website was created using <strong>JavaScript</strong>, <strong>HTML5</ strong > and <strong>CSS3</strong>, the <strong>Yarn</strong> package manager was also used, together with the <strong>Babel</strong> compiler, for learning purposes.
+Website created to easily and quickly calculate the ICMS tax, showing the calculation memory used and a basic explanation of the ICMS, the website was created using <strong>JavaScript</strong>, <strong>HTML5</strong> and <strong>CSS3</strong>, the <strong>Yarn</strong> package manager was also used, together with the <strong>Babel</strong> compiler, for learning purposes.
 
 Progress -> 50% - <strong>Offline</strong>
 
