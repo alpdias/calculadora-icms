@@ -3,8 +3,6 @@ Criado em 07/2020
 @Autor: Paulo https://github.com/alpdias
 */
 
-simples(); // gambiarra para limpar o html e o script JS da tela ao recarregar a pagina 
-
 function carregarOrigem() { // funçao para mostrar no elemento 'input' o valor selecionado e definir o valor
 
     var carregar = origemSelect.value;
