@@ -117,7 +117,8 @@ function calculoSimples() { // funçao para calcular o valor do ICMS
             </table>
             <button name="novo" id="novo" onclick="simples()">Recalcular</button>\
             <p><strong>Memória de Cálculo:</strong></p>\
-            <p>Valor do ICMS = ${base} x ${valorOrigem}% = ${calculo}</p>`; // elemento 'table' e 'p' do html com os resultados
+            <p>Valor do ICMS = ${base} x ${valorOrigem}%</p>\
+            <p>Valor do ICMS = ${calculo}</p>`; // elemento 'table' e 'p' do html com os resultados
 
     };
     
