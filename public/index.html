@@ -11,94 +11,98 @@ Criado em 07/2020
         <link rel="stylesheet" href="view.css">
     </head>
     <body onload="simples()">
-        <h1>Calculadora de ICMS</h1>
-        <div id="app">
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></div></br>
-            <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>
-            <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">
-                <option value="">UF</option>
-                <option value="Acre">AC</option>
-                <option value="Alagoas">AL</option>
-                <option value="Amapá">AP</option>
-                <option value="Amazonas">AM</option>
-                <option value="Bahia">BA</option>
-                <option value="Ceará">CE</option>
-                <option value="Distrito Federal">DF</option>
-                <option value="Espírito Santo">ES</option>
-                <option value="Goiás">GO</option>
-                <option value="Maranhão">MA</option>
-                <option value="Mato Grosso">MT</option>
-                <option value="Mato Grosso do Sul">MS</option>
-                <option value="Minas Gerais">MG</option>
-                <option value="Pará">PA</option>
-                <option value="Paraíba">PB</option>
-                <option value="Paraná">PR</option>
-                <option value="Pernambuco">PE</option>
-                <option value="Piauí">PI</option>
-                <option value="Rio de Janeiro">RJ</option>
-                <option value="Rio Grande do Norte">RN</option>
-                <option value="Rio Grande do Sul">RS</option>
-                <option value="Rondônia">RO</option>
-                <option value="Roraima">RR</option>
-                <option value="Santa Catarina">SC</option>
-                <option value="São Paulo">SP</option>
-                <option value="Sergipe">SE</option>
-                <option value="Tocantins">TO</option>
-            </select></div></br>
-            <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>
-            <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>
-            <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>
-        </div>
-        <div id="resultado"></div>
-        <div id="resumo">
-            <h1>O que é o ICMS?</h1>
-            <p>O ICMS (Imposto sobre Circulação de Mercadorias e Serviços) é um imposto estadual que incide
-                sobre a venda e o transporte de produtos comercializados no país ou mesmo importados. Ele é 
-                cobrado de forma indireta, ou seja, seu valor é adicionado ao preço do produto ou serviço. Seu fato 
-                gerador acontece na troca de titularidade de um bem ou serviço para o comprador final.</p>
-            <p>A regulamentação deste imposto é de responsabilidade de cada Estado e do Distrito Federal, que estipulam 
-                a porcentagem cobrada em suas regiões de atuação. Assim, cada localidade possui sua própria tarifa, para 
-                cada uma das unidades federativas (UF).</p>
-            <h1>Como calcular o ICMS?</h1>
-            <p>Primeiro, é necessário saber qual alíquota incide no estado em que sua empresa atua. Em uma 
-                situação normal, no qual a venda é efetuada dentro da mesma UF, o cálculo é simples:
-            <p><strong>Valor do Produto X Alíquota do Estado = Valor do ICMS</strong></p>
-            <p>Ex.: Um produto custa R$ 1.000,00 reais e sobre ele incide a alíquota de 18% (valor aplicado em vários 
-                estados como São Paulo, Bahia e Paraná), o cálculo seria o seguinte:</p>
-            <p><strong>R$ 1.000,00 X 18% = R$ 180,00</strong></p>
-            <p>Ou seja, neste caso o valor do ICMS deste produto seria de R$ 180,00, totalizando R$ 1.180,00.</p>
-            <h1>ICMS Substituição Tributária</h1>
-            <p>O regime de <strong>Substituição Tributaria</strong> é uma obrigação tributária que transfere ao 
-                sujeito passivo a responsabilidade pelo pagamento do ICMS, no qual o fato gerador ocorrer logo após 
-                ao fato ocorrido, o que garante que a restituição da quantia será paga, mesmo que o fato 
-                gerador não se realize, ou seja, o Estado cobra o imposto da venda do produto no 
-                momento que ele sai da fábrica, passando a uma terceira pessoa o dever da obrigação 
-                tributária. O principal objetivo da <strong>Substituição Tributaria</strong> é facilitar o processo de 
-                fiscalização dos tributos.</p>
-            <h1>Como calcular o ICMS-ST?</h1>
-            <p>Primeiro temos que calcular o ICMS próprio, ou seja, aquele ICMS que o estabelecimento 
-                emissor da NF recolheria. No cálculo do ICMS-ST, o ICMS próprio é mais conhecido como ICMS interestadual. 
-                Vamos usar a fórmula abaixo para o cálculo:</p>
-            <p><strong>Base do ICMS Interestadual = (Valor do produto + Frete + Seguro + Outras Despesas - Descontos)</strong></p>
-            <p><strong>Valor do ICMS Interestadual = Base ICMS Interestadual * (Alíquota ICMS Interestadual / 100)</strong></p>
-            <p>Agora temos que fazer o cálculo para encontrar a Base do ICMS-ST:</p>
-            <p><strong>Base do ICMS-ST = (Valor do produto + Valor do IPI + Frete + Seguro + Outras Despesas - Descontos) * (1 + (%MVA / 100))</strong></p>
-            <p>Perceba que nesta etapa do cálculo foi incluindo o um detalhe importante, o MVA (Margem de Valor Agregado). Que é a 
-                margem de lucro que o governo estima ser aplicada desde o momento que a mercadoria saiu da fábrica, contando com 
-                a margem do distribuidor e também de quem venderá para o consumidor final.</p>
-            <p>E agora estamos preparados para calcular o valor do ICMS-ST:</p>
-            <p><strong>Valor do ICMS-ST = (Base do ICMS-ST * (Alíquota do ICMS Interno / 100)) - Valor do ICMS Interestadual</strong></p>
-            <p>A alíquota do ICMS Interno é a alíquota de ICMS aplicada dentro do estado de destino. É a alíquota 
-                na qual a empresa que está comprando a mercadoria usaria para vender no seu próprio estado.</p>
-            <h1>Tabela do ICMS</h1>
-            <img src="../img/tabela-icms-inter.jpg" alt="Tabela do ICMS Interestadual" id="tabela">
-        </div>
-        <div id="tag">
-            <p>#icms #icms-st #substiuiçaotributaria #interestadual #aliquota #aliquotainterna #calculo #calculadoradeicms #icmsinterestadual</p>
-        </div>
-        <div id="rodape">
-            <footer>COPYRIGHT &copy; 2020 | <a href="https://github.com/alpdias" target="_blank">PAULO</a></footer>
-        </div>
+        <header>
+            <h1>Calculadora de ICMS</h1>
+        </header>
+        <main id="programa">
+            <section id="app">
+                <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>
+                <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>
+                <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">
+                    <option value="">UF</option>
+                    <option value="Acre">AC</option>
+                    <option value="Alagoas">AL</option>
+                    <option value="Amapá">AP</option>
+                    <option value="Amazonas">AM</option>
+                    <option value="Bahia">BA</option>
+                    <option value="Ceará">CE</option>
+                    <option value="Distrito Federal">DF</option>
+                    <option value="Espírito Santo">ES</option>
+                    <option value="Goiás">GO</option>
+                    <option value="Maranhão">MA</option>
+                    <option value="Mato Grosso">MT</option>
+                    <option value="Mato Grosso do Sul">MS</option>
+                    <option value="Minas Gerais">MG</option>
+                    <option value="Pará">PA</option>
+                    <option value="Paraíba">PB</option>
+                    <option value="Paraná">PR</option>
+                    <option value="Pernambuco">PE</option>
+                    <option value="Piauí">PI</option>
+                    <option value="Rio de Janeiro">RJ</option>
+                    <option value="Rio Grande do Norte">RN</option>
+                    <option value="Rio Grande do Sul">RS</option>
+                    <option value="Rondônia">RO</option>
+                    <option value="Roraima">RR</option>
+                    <option value="Santa Catarina">SC</option>
+                    <option value="São Paulo">SP</option>
+                    <option value="Sergipe">SE</option>
+                    <option value="Tocantins">TO</option>
+                </select></br></div>
+                <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>
+                <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>
+                <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>
+            </section>
+            <section id="resultado"></section>
+            <section id="resumo">
+                <article>
+                    <h1>O que é o ICMS?</h1>
+                    <p>O ICMS (Imposto sobre Circulação de Mercadorias e Serviços) é um imposto estadual que incide
+                        sobre a venda e o transporte de produtos comercializados no país ou mesmo importados. Ele é 
+                        cobrado de forma indireta, ou seja, seu valor é adicionado ao preço do produto ou serviço. Seu fato 
+                        gerador acontece na troca de titularidade de um bem ou serviço para o comprador final.</p>
+                    <p>A regulamentação deste imposto é de responsabilidade de cada Estado e do Distrito Federal, que estipulam 
+                        a porcentagem cobrada em suas regiões de atuação. Assim, cada localidade possui sua própria tarifa, para 
+                        cada uma das unidades federativas (UF).</p>
+                    <h1>Como calcular o ICMS?</h1>
+                    <p>Primeiro, é necessário saber qual alíquota incide no estado em que sua empresa atua. Em uma 
+                        situação normal, no qual a venda é efetuada dentro da mesma UF, o cálculo é simples:
+                    <p><strong>Valor do Produto X Alíquota do Estado = Valor do ICMS</strong></p>
+                    <p>Ex.: Um produto custa R$ 1.000,00 reais e sobre ele incide a alíquota de 18% (valor aplicado em vários 
+                        estados como São Paulo, Bahia e Paraná), o cálculo seria o seguinte:</p>
+                    <p><strong>R$ 1.000,00 X 18% = R$ 180,00</strong></p>
+                    <p>Ou seja, neste caso o valor do ICMS deste produto seria de R$ 180,00, totalizando R$ 1.180,00.</p>
+                    <h1>ICMS Substituição Tributária</h1>
+                    <p>O regime de <strong>Substituição Tributaria</strong> é uma obrigação tributária que transfere ao 
+                        sujeito passivo a responsabilidade pelo pagamento do ICMS, no qual o fato gerador ocorrer logo após 
+                        ao fato ocorrido, o que garante que a restituição da quantia será paga, mesmo que o fato 
+                        gerador não se realize, ou seja, o Estado cobra o imposto da venda do produto no 
+                        momento que ele sai da fábrica, passando a uma terceira pessoa o dever da obrigação 
+                        tributária. O principal objetivo da <strong>Substituição Tributaria</strong> é facilitar o processo de 
+                        fiscalização dos tributos.</p>
+                    <h1>Como calcular o ICMS-ST?</h1>
+                    <p>Primeiro temos que calcular o ICMS próprio, ou seja, aquele ICMS que o estabelecimento 
+                        emissor da NF recolheria. No cálculo do ICMS-ST, o ICMS próprio é mais conhecido como ICMS interestadual. 
+                        Vamos usar a fórmula abaixo para o cálculo:</p>
+                    <p><strong>Base do ICMS Interestadual = (Valor do produto + Frete + Seguro + Outras Despesas - Descontos)</strong></p>
+                    <p><strong>Valor do ICMS Interestadual = Base ICMS Interestadual * (Alíquota ICMS Interestadual / 100)</strong></p>
+                    <p>Agora temos que fazer o cálculo para encontrar a Base do ICMS-ST:</p>
+                    <p><strong>Base do ICMS-ST = (Valor do produto + Valor do IPI + Frete + Seguro + Outras Despesas - Descontos) * (1 + (%MVA / 100))</strong></p>
+                    <p>Perceba que nesta etapa do cálculo foi incluindo o um detalhe importante, o MVA (Margem de Valor Agregado). Que é a 
+                        margem de lucro que o governo estima ser aplicada desde o momento que a mercadoria saiu da fábrica, contando com 
+                        a margem do distribuidor e também de quem venderá para o consumidor final.</p>
+                    <p>E agora estamos preparados para calcular o valor do ICMS-ST:</p>
+                    <p><strong>Valor do ICMS-ST = (Base do ICMS-ST * (Alíquota do ICMS Interno / 100)) - Valor do ICMS Interestadual</strong></p>
+                    <p>A alíquota do ICMS Interno é a alíquota de ICMS aplicada dentro do estado de destino. É a alíquota 
+                        na qual a empresa que está comprando a mercadoria usaria para vender no seu próprio estado.</p>
+                    <h1>Tabela do ICMS</h1>
+                    <img src="../img/tabela-icms-inter.jpg" alt="Tabela do ICMS Interestadual" id="tabela">
+                </article>
+            </section>
+            <section id="tag">
+                <p>#icms #icms-st #substiuiçaotributaria #interestadual #aliquota #aliquotainterna #calculo #calculadoradeicms #icmsinterestadual</p>
+            </section>
+        </main>
+        <footer id="rodape">COPYRIGHT &copy; 2020 | <a href="https://github.com/alpdias" target="_blank">PAULO</a></footer>
         <script src="bundle.js"></script>
     </body>
 </html>

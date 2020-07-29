@@ -99,24 +99,28 @@ function calculoSimples() { // funçao para calcular o valor do ICMS
     } else {
 
         document.querySelector('#resultado').innerHTML = `\
-            <table>\
-            <tr>\
-            <td>Valor do Produto:</td>\
-            <td>R$ ${base}</td>\
-            </tr>\
-            <tr>\
-            <td>Alíquota ${origemText}:</td>\
-            <td>${valorOrigem}%</td>\
-            </tr>\
-            <tr>\
-            <td>Valor do ICMS:</td>\
-            <td>R$ ${calculo}</td>\
-            </tr>\
-            </table>
-            <button name="novo" id="novo" onclick="simples()">Recalcular</button>\
-            <p><strong>Memória de Cálculo:</strong></p>\
-            <p>Valor do ICMS = ${base} x ${valorOrigem}%</p>\
-            <p>Valor do ICMS = ${calculo}</p>`; // elemento 'table' e 'p' do html com os resultados
+            <div id="tabelaResultadoSimples">\
+                <table>\
+                    <tr>\
+                        <td>Valor do Produto:</td>\
+                        <td>R$ ${base}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Alíquota ${origemText}:</td>\
+                        <td>${valorOrigem}%</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Valor do ICMS:</td>\
+                        <td>R$ ${calculo}</td>\
+                    </tr>\
+                </table>\
+                <button name="novo" id="novo" onclick="simples()">Recalcular</button>\
+            </div>\
+            <div id="memoriaSimples">\
+                <h2>Memória de Cálculo:</h2>\
+                <p>Valor do ICMS = ${base} x ${valorOrigem}%</p>\
+                <p>Valor do ICMS = ${calculo}</p>\
+            </div>`; // elemento 'table' e 'p' do html com os resultados
 
     };
     
@@ -127,75 +131,75 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
     document.querySelector('#interestadual').checked = true; // verificar 'radio' checked
 
     document.querySelector('#app').innerHTML = '\
-        <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></div></br>\
-        <div>R$<input type="number" name="ipi" id="ipi" placeholder="Valor do IPI" autocomplete="off" inputmode="numeric"/></div></br>\
-        <div>R$<input type="number" name="frete" id="frete" placeholder="Valor do Frete" autocomplete="off" inputmode="numeric"/></div></br>\
-        <div>R$<input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro" autocomplete="off" inputmode="numeric"/></div></br>\
-        <div>R$<input type="number" name="despesa" id="despesa" placeholder="Outras Despesas" autocomplete="off" inputmode="numeric"/></div></br>\
-        <div>R$<input type="number" name="desconto" id="desconto" placeholder="Descontos" autocomplete="off" inputmode="numeric"/></div></br>\
-        <div>%<input type="number" name="mva" id="mva" placeholder="MVA %" autocomplete="off" inputmode="numeric"/></div></br>\
+        <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
+        <div>R$<input type="number" name="ipi" id="ipi" placeholder="Valor do IPI" autocomplete="off" inputmode="numeric"/></br></div>\
+        <div>R$<input type="number" name="frete" id="frete" placeholder="Valor do Frete" autocomplete="off" inputmode="numeric"/></br></div>\
+        <div>R$<input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro" autocomplete="off" inputmode="numeric"/></br></div>\
+        <div>R$<input type="number" name="despesa" id="despesa" placeholder="Outras Despesas" autocomplete="off" inputmode="numeric"/></br></div>\
+        <div>R$<input type="number" name="desconto" id="desconto" placeholder="Descontos" autocomplete="off" inputmode="numeric"/></br></div>\
+        <div>%<input type="number" name="mva" id="mva" placeholder="MVA %" autocomplete="off" inputmode="numeric"/></br></div>\
         <div>UF<input type="text" name="origem" id="origem" placeholder="Estado Origem" autocomplete="off"/>\
         <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
-        <option value="">UF</option>\
-        <option value="Acre">AC</option>\
-        <option value="Alagoas">AL</option>\
-        <option value="Amapá">AP</option>\
-        <option value="Amazonas">AM</option>\
-        <option value="Bahia">BA</option>\
-        <option value="Ceará">CE</option>\
-        <option value="Distrito Federal">DF</option>\
-        <option value="Espírito Santo">ES</option>\
-        <option value="Goiás">GO</option>\
-        <option value="Maranhão">MA</option>\
-        <option value="Mato Grosso">MT</option>\
-        <option value="Mato Grosso do Sul">MS</option>\
-        <option value="Minas Gerais">MG</option>\
-        <option value="Pará">PA</option>\
-        <option value="Paraíba">PB</option>\
-        <option value="Paraná">PR</option>\
-        <option value="Pernambuco">PE</option>\
-        <option value="Piauí">PI</option>\
-        <option value="Rio de Janeiro">RJ</option>\
-        <option value="Rio Grande do Norte">RN</option>\
-        <option value="Rio Grande do Sul">RS</option>\
-        <option value="Rondônia">RO</option>\
-        <option value="Roraima">RR</option>\
-        <option value="Santa Catarina">SC</option>\
-        <option value="São Paulo">SP</option>\
-        <option value="Sergipe">SE</option>\
-        <option value="Tocantins">TO</option>\
-        </select></div></br>\
+            <option value="">UF</option>\
+            <option value="Acre">AC</option>\
+            <option value="Alagoas">AL</option>\
+            <option value="Amapá">AP</option>\
+            <option value="Amazonas">AM</option>\
+            <option value="Bahia">BA</option>\
+            <option value="Ceará">CE</option>\
+            <option value="Distrito Federal">DF</option>\
+            <option value="Espírito Santo">ES</option>\
+            <option value="Goiás">GO</option>\
+            <option value="Maranhão">MA</option>\
+            <option value="Mato Grosso">MT</option>\
+            <option value="Mato Grosso do Sul">MS</option>\
+            <option value="Minas Gerais">MG</option>\
+            <option value="Pará">PA</option>\
+            <option value="Paraíba">PB</option>\
+            <option value="Paraná">PR</option>\
+            <option value="Pernambuco">PE</option>\
+            <option value="Piauí">PI</option>\
+            <option value="Rio de Janeiro">RJ</option>\
+            <option value="Rio Grande do Norte">RN</option>\
+            <option value="Rio Grande do Sul">RS</option>\
+            <option value="Rondônia">RO</option>\
+            <option value="Roraima">RR</option>\
+            <option value="Santa Catarina">SC</option>\
+            <option value="São Paulo">SP</option>\
+            <option value="Sergipe">SE</option>\
+            <option value="Tocantins">TO</option>\
+        </select></br></div>\
         <div>UF<input type="text" name="destino" id="destino" placeholder="Estado Destino" autocomplete="off"/>\
         <select name="destinoSelect" id="destinoSelect" onclick="carregarDestino()">\
-        <option value="">UF</option>\
-        <option value="Acre">AC</option>\
-        <option value="Alagoas">AL</option>\
-        <option value="Amapá">AP</option>\
-        <option value="Amazonas">AM</option>\
-        <option value="Bahia">BA</option>\
-        <option value="Ceará">CE</option>\
-        <option value="Distrito Federal">DF</option>\
-        <option value="Espírito Santo">ES</option>\
-        <option value="Goiás">GO</option>\
-        <option value="Maranhão">MA</option>\
-        <option value="Mato Grosso">MT</option>\
-        <option value="Mato Grosso do Sul">MS</option>\
-        <option value="Minas Gerais">MG</option>\
-        <option value="Pará">PA</option>\
-        <option value="Paraíba">PB</option>\
-        <option value="Paraná">PR</option>\
-        <option value="Pernambuco">PE</option>\
-        <option value="Piauí">PI</option>\
-        <option value="Rio de Janeiro">RJ</option>\
-        <option value="Rio Grande do Norte">RN</option>\
-        <option value="Rio Grande do Sul">RS</option>\
-        <option value="Rondônia">RO</option>\
-        <option value="Roraima">RR</option>\
-        <option value="Santa Catarina">SC</option>\
-        <option value="São Paulo">SP</option>\
-        <option value="Sergipe">SE</option>\
-        <option value="Tocantins">TO</option>\
-        </select></div></br>\
+            <option value="">UF</option>\
+            <option value="Acre">AC</option>\
+            <option value="Alagoas">AL</option>\
+            <option value="Amapá">AP</option>\
+            <option value="Amazonas">AM</option>\
+            <option value="Bahia">BA</option>\
+            <option value="Ceará">CE</option>\
+            <option value="Distrito Federal">DF</option>\
+            <option value="Espírito Santo">ES</option>\
+            <option value="Goiás">GO</option>\
+            <option value="Maranhão">MA</option>\
+            <option value="Mato Grosso">MT</option>\
+            <option value="Mato Grosso do Sul">MS</option>\
+            <option value="Minas Gerais">MG</option>\
+            <option value="Pará">PA</option>\
+            <option value="Paraíba">PB</option>\
+            <option value="Paraná">PR</option>\
+            <option value="Pernambuco">PE</option>\
+            <option value="Piauí">PI</option>\
+            <option value="Rio de Janeiro">RJ</option>\
+            <option value="Rio Grande do Norte">RN</option>\
+            <option value="Rio Grande do Sul">RS</option>\
+            <option value="Rondônia">RO</option>\
+            <option value="Roraima">RR</option>\
+            <option value="Santa Catarina">SC</option>\
+            <option value="São Paulo">SP</option>\
+            <option value="Sergipe">SE</option>\
+            <option value="Tocantins">TO</option>\
+        </select></br></div>\
         <button name="calcular" id="calcular" onclick="calculoComplemento()">Calcular</button>\
         <input type="radio" name="Inter" id="simples" onclick="simples()"/><label for="simples">ICMS</label>\
         <input type="radio" name="Inter" id="interestadual" checked onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
@@ -209,38 +213,38 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
     if (document.querySelector('#simples').checked = true) { // verificar 'radio' checked
 
         document.querySelector('#app').innerHTML = '\
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></div></br>\
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
             <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
-            <option value="">UF</option>\
-            <option value="Acre">AC</option>\
-            <option value="Alagoas">AL</option>\
-            <option value="Amapá">AP</option>\
-            <option value="Amazonas">AM</option>\
-            <option value="Bahia">BA</option>\
-            <option value="Ceará">CE</option>\
-            <option value="Distrito Federal">DF</option>\
-            <option value="Espírito Santo">ES</option>\
-            <option value="Goiás">GO</option>\
-            <option value="Maranhão">MA</option>\
-            <option value="Mato Grosso">MT</option>\
-            <option value="Mato Grosso do Sul">MS</option>\
-            <option value="Minas Gerais">MG</option>\
-            <option value="Pará">PA</option>\
-            <option value="Paraíba">PB</option>\
-            <option value="Paraná">PR</option>\
-            <option value="Pernambuco">PE</option>\
-            <option value="Piauí">PI</option>\
-            <option value="Rio de Janeiro">RJ</option>\
-            <option value="Rio Grande do Norte">RN</option>\
-            <option value="Rio Grande do Sul">RS</option>\
-            <option value="Rondônia">RO</option>\
-            <option value="Roraima">RR</option>\
-            <option value="Santa Catarina">SC</option>\
-            <option value="São Paulo">SP</option>\
-            <option value="Sergipe">SE</option>\
-            <option value="Tocantins">TO</option>\
-            </select></div></br>\
+                <option value="">UF</option>\
+                <option value="Acre">AC</option>\
+                <option value="Alagoas">AL</option>\
+                <option value="Amapá">AP</option>\
+                <option value="Amazonas">AM</option>\
+                <option value="Bahia">BA</option>\
+                <option value="Ceará">CE</option>\
+                <option value="Distrito Federal">DF</option>\
+                <option value="Espírito Santo">ES</option>\
+                <option value="Goiás">GO</option>\
+                <option value="Maranhão">MA</option>\
+                <option value="Mato Grosso">MT</option>\
+                <option value="Mato Grosso do Sul">MS</option>\
+                <option value="Minas Gerais">MG</option>\
+                <option value="Pará">PA</option>\
+                <option value="Paraíba">PB</option>\
+                <option value="Paraná">PR</option>\
+                <option value="Pernambuco">PE</option>\
+                <option value="Piauí">PI</option>\
+                <option value="Rio de Janeiro">RJ</option>\
+                <option value="Rio Grande do Norte">RN</option>\
+                <option value="Rio Grande do Sul">RS</option>\
+                <option value="Rondônia">RO</option>\
+                <option value="Roraima">RR</option>\
+                <option value="Santa Catarina">SC</option>\
+                <option value="São Paulo">SP</option>\
+                <option value="Sergipe">SE</option>\
+                <option value="Tocantins">TO</option>\
+            </select></br></div>\
             <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>\
             <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>\
             <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
@@ -250,38 +254,38 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
     } else if (document.querySelector('#interestadual').checked = true) {
 
         document.querySelector('#app').innerHTML = '\
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></div></br>\
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
             <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
-            <option value="">UF</option>\
-            <option value="Acre">AC</option>\
-            <option value="Alagoas">AL</option>\
-            <option value="Amapá">AP</option>\
-            <option value="Amazonas">AM</option>\
-            <option value="Bahia">BA</option>\
-            <option value="Ceará">CE</option>\
-            <option value="Distrito Federal">DF</option>\
-            <option value="Espírito Santo">ES</option>\
-            <option value="Goiás">GO</option>\
-            <option value="Maranhão">MA</option>\
-            <option value="Mato Grosso">MT</option>\
-            <option value="Mato Grosso do Sul">MS</option>\
-            <option value="Minas Gerais">MG</option>\
-            <option value="Pará">PA</option>\
-            <option value="Paraíba">PB</option>\
-            <option value="Paraná">PR</option>\
-            <option value="Pernambuco">PE</option>\
-            <option value="Piauí">PI</option>\
-            <option value="Rio de Janeiro">RJ</option>\
-            <option value="Rio Grande do Norte">RN</option>\
-            <option value="Rio Grande do Sul">RS</option>\
-            <option value="Rondônia">RO</option>\
-            <option value="Roraima">RR</option>\
-            <option value="Santa Catarina">SC</option>\
-            <option value="São Paulo">SP</option>\
-            <option value="Sergipe">SE</option>\
-            <option value="Tocantins">TO</option>\
-            </select></div></br>\
+                <option value="">UF</option>\
+                <option value="Acre">AC</option>\
+                <option value="Alagoas">AL</option>\
+                <option value="Amapá">AP</option>\
+                <option value="Amazonas">AM</option>\
+                <option value="Bahia">BA</option>\
+                <option value="Ceará">CE</option>\
+                <option value="Distrito Federal">DF</option>\
+                <option value="Espírito Santo">ES</option>\
+                <option value="Goiás">GO</option>\
+                <option value="Maranhão">MA</option>\
+                <option value="Mato Grosso">MT</option>\
+                <option value="Mato Grosso do Sul">MS</option>\
+                <option value="Minas Gerais">MG</option>\
+                <option value="Pará">PA</option>\
+                <option value="Paraíba">PB</option>\
+                <option value="Paraná">PR</option>\
+                <option value="Pernambuco">PE</option>\
+                <option value="Piauí">PI</option>\
+                <option value="Rio de Janeiro">RJ</option>\
+                <option value="Rio Grande do Norte">RN</option>\
+                <option value="Rio Grande do Sul">RS</option>\
+                <option value="Rondônia">RO</option>\
+                <option value="Roraima">RR</option>\
+                <option value="Santa Catarina">SC</option>\
+                <option value="São Paulo">SP</option>\
+                <option value="Sergipe">SE</option>\
+                <option value="Tocantins">TO</option>\
+            </select></br></div>\
             <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>\
             <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>\
             <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
@@ -1935,59 +1939,63 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
         var valorST = (calculoBaseST * (parseInt(valorDestino) / 100)) - valorICMS; // valor do ICMS ST
 
         document.querySelector('#resultado').innerHTML = `\
-            <table>\
-            <tr>\
-            <td>Valor do Produto:</td>\
-            <td>R$ ${base}</td>\
-            </tr>\
-            <tr>\
-            <td>Valor do IPI:</td>\
-            <td>R$ ${ipi}</td>\
-            </tr>\
-            <tr>\
-            <td>Valor do Frete:</td>\
-            <td>R$ ${frete}</td>\
-            </tr>\
-            <tr>\
-            <td>Valor das Despesas:</td>\
-            <td>R$ ${despesa}</td>\
-            </tr>\
-            <tr>\
-            <td>Valor dos Descontos:</td>\
-            <td>R$ ${desconto}</td>\
-            </tr>\
-            <tr>\
-            <td>Alíquota MVA:</td>\
-            <td>${mva}%</td>\
-            </tr>\
-            <tr>\
-            <td>Alíquota ${origemText}:</td>\
-            <td>${valorOrigem}%</td>\
-            </tr>\
-            <tr>\
-            <td>Alíquota ${destinoText}:</td>\
-            <td>${valorDestino}%</td>\
-            </tr>\
-            <tr>\
-            <td>Alíquota InterEstadual:</td>\
-            <td>${valorInter}%</td>\
-            </tr>\
-            <tr>\
-            <td>Base de Cálculo:</td>\
-            <td>R$ ${calculoBaseST}</td>\
-            </tr>\
-            <tr>\
-            <td>Valor do ICMS ST:</td>\
-            <td>R$ ${valorST}</td>\
-            </tr>\
-            </table>
-            <button name="novo" id="novo" onclick="complemento()">Recalcular</button>
-            <p><strong>Memória de Cálculo:</strong></p>\
-            <p>Base do ICMS Interestadual = (${base} + ${frete} + ${seguro} + ${despesa} - ${desconto})</p>\
-            <p>Valor do ICMS Interestadual = ${calculoBaseInter} x (${valorInter}% / 100)</p>\
-            <p>Base do ICMS-ST = (${base} + ${ipi} + ${frete} + ${seguro} + ${despesa} - ${desconto}) x (1 + (${mva}% / 100))</p>
-            <p>Valor do ICMS-ST = (${calculoBaseST} x (${valorDestino}% / 100)) - ${valorICMS}</p>
-            <p>Valor do ICMS-ST = ${valorST}</p>`; // elemento 'table' e 'p' do html com os resultados
+            <div id="tabelaResultadoCompleto">
+                <table>\
+                    <tr>\
+                        <td>Valor do Produto:</td>\
+                        <td>R$ ${base}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Valor do IPI:</td>\
+                        <td>R$ ${ipi}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Valor do Frete:</td>\
+                        <td>R$ ${frete}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Valor das Despesas:</td>\
+                        <td>R$ ${despesa}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Valor dos Descontos:</td>\
+                        <td>R$ ${desconto}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Alíquota MVA:</td>\
+                        <td>${mva}%</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Alíquota ${origemText}:</td>\
+                        <td>${valorOrigem}%</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Alíquota ${destinoText}:</td>\
+                        <td>${valorDestino}%</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Alíquota InterEstadual:</td>\
+                        <td>${valorInter}%</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Base de Cálculo:</td>\
+                        <td>R$ ${calculoBaseST}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>Valor do ICMS ST:</td>\
+                        <td>R$ ${valorST}</td>\
+                     </tr>\
+                </table>
+                <button name="novo" id="novo" onclick="complemento()">Recalcular</button>
+            </div>
+            <div id="memoriaCompleta">
+                <h2>Memória de Cálculo:</strong></h2>\
+                <p>Base do ICMS Interestadual = (${base} + ${frete} + ${seguro} + ${despesa} - ${desconto})</p>\
+                <p>Valor do ICMS Interestadual = ${calculoBaseInter} x (${valorInter}% / 100)</p>\
+                <p>Base do ICMS-ST = (${base} + ${ipi} + ${frete} + ${seguro} + ${despesa} - ${desconto}) x (1 + (${mva}% / 100))</p>
+                <p>Valor do ICMS-ST = (${calculoBaseST} x (${valorDestino}% / 100)) - ${valorICMS}</p>
+                <p>Valor do ICMS-ST = ${valorST}</p>
+            </div>`; // elemento 'table' e 'p' do html com os resultados
 
     };
     
