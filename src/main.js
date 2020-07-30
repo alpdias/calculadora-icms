@@ -378,7 +378,7 @@ function interestadual() {
     var destinoSelect = document.querySelector('#destinoSelect'); //console.log(origemSelect[2].text); tag 'select' pode ser usada com index
     var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
-    aliquotaInter = 0;
+    var aliquotaInter = 0;
     
     if (origemText === 'AC' && destinoText === 'AC') {
         aliquotaInter =  17;
