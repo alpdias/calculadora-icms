@@ -1,4 +1,17 @@
+@charset "UTF-8";
+
 /*
 Criado em 07/2020
 @Autor: Paulo https://github.com/alpdias
 */
+
+@import url('');
+
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: '';
+    src: url('');
+}
