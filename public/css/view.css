@@ -5,15 +5,21 @@ Criado em 07/2020
 @Autor: Paulo https://github.com/alpdias
 */
 
+/* FONTES */
 @import url('');
+
+@font-face {
+    font-family: '';
+    src: url('');
+}
 
 /* RESETS DO HTML */
 * {
     box-sizing: border-box;
 }
 
-/* FONTES */
-@font-face {
-    font-family: '';
-    src: url('');
+img {
+    max-width: 100%;
+    height: auto;
 }
+
