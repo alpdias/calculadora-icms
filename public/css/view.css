@@ -6,11 +6,11 @@ Criado em 07/2020
 */
 
 /* FONTES */
-@import url('');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 @font-face {
-    font-family: '';
-    src: url('');
+    font-family: 'Roboto', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 }
 
 /* RESETS DO HTML */
@@ -23,3 +23,17 @@ img {
     height: auto;
 }
 
+/* 
+CORES
+#00A878 Green
+#D8F1A0 Yellow Green
+#F3C178 Gold
+#FE5E41 Orange
+#0B0500 Black
+*/
+
+/* GERAL */
+body {
+    background-color: #00A878 ;
+    font-family: 'Roboto', sans-serif;
+}
