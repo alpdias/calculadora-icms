@@ -34,6 +34,35 @@ CORES
 
 /* GERAL */
 body {
-    background-color: #00A878 ;
     font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+/* CABEÇALHO */
+header {
+    background-color: #FE5E41;
+    font-weight: bolder;
+    padding: 15px;
+}
+
+/* ENTRADAS */
+#app {
+    background-color: #00A878;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-bottom: 30px;
+    text-align: left;
+}
+
+/* CONTEUDO, CORPO */
+#tag {
+    color: #0b050048;
+    font-size: 14px;
+}
+
+#explicacao, #tag {
+    padding: 18px;
 }

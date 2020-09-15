@@ -213,7 +213,7 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
     if (document.querySelector('#simples').checked = true) { // verificar 'radio' checked
 
         document.querySelector('#app').innerHTML = '\
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
+            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"z/></br></div>\
             <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
                 <option value="">UF</option>\
