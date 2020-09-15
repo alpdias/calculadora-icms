@@ -44,6 +44,7 @@ body {
 /* CABEÇALHO */
 header {
     background-color: #FE5E41;
+    color: #0B0500;
     font-weight: bolder;
     padding: 15px;
 }
