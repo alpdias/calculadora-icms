@@ -43,7 +43,7 @@ body {
 
 /* CABEÇALHO */
 header {
-    background-color: #FE5E41;
+    background-color: #ffea32;
     color: #0B0500;
     font-weight: bolder;
     padding: 15px;
@@ -55,7 +55,6 @@ header {
     padding-top: 30px;
     padding-left: 10px;
     padding-bottom: 30px;
-    text-align: left;
 }
 
 /* CONTEUDO, CORPO */
