@@ -105,7 +105,7 @@ function complemento() {
   document.querySelector('#interestadual').checked = true; // verificar 'radio' checked
 
   document.querySelector('#app').innerHTML = '\
-        <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
+        <div class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
         <div>R$<input type="number" name="ipi" id="ipi" placeholder="Valor do IPI" autocomplete="off" inputmode="numeric"/></br></div>\
         <div>R$<input type="number" name="frete" id="frete" placeholder="Valor do Frete" autocomplete="off" inputmode="numeric"/></br></div>\
         <div>R$<input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro" autocomplete="off" inputmode="numeric"/></br></div>\
@@ -188,7 +188,7 @@ function simples() {
   if (document.querySelector('#simples').checked = true) {
     // verificar 'radio' checked
     document.querySelector('#app').innerHTML = '\
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
+            <div class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
             <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
                 <option value="">UF</option>\
@@ -227,7 +227,7 @@ function simples() {
     document.querySelector('#resultado').innerHTML = '';
   } else if (document.querySelector('#interestadual').checked = true) {
     document.querySelector('#app').innerHTML = '\
-            <div>R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
+            <div class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
             <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
                 <option value="">UF</option>\
