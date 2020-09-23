@@ -7,10 +7,16 @@ Criado em 07/2020
 
 /* FONTES */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 
 @font-face {
     font-family: 'Roboto', sans-serif;
     src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+}
+
+@font-face {
+    font-family: 'Secular One', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 }
 
 /* RESETS DO HTML */
@@ -43,8 +49,9 @@ body {
 
 /* CABEÇALHO */
 header {
+    font-family: 'Secular One', sans-serif;
     background-color: #ffea32;
-    color: #0B0500;
+    color: #000000;;
     font-weight: bolder;
     padding: 15px;
 }
@@ -53,20 +60,74 @@ header {
 #app {
     background-color: #00A878;
     padding-top: 30px;
-    padding-left: 10px;
     padding-bottom: 30px;
 }
 
 .titulos-entrada {
+    font-family: 'Secular One', sans-serif;
     background-color: #ffea32;
+    color: #000000;
+    padding: 4px;
+    border-style: none;
+    border-radius: 6px;
 }
+
+input {
+    padding: 4px;
+    margin-left: 6px;
+    border-style: none;
+    border-radius: 6px;
+}
+
+select {
+    padding: 0px 2px 0px 0px;
+    border-style: none;
+    border-radius: 6px;
+}
+
+button {
+    font-family: 'Secular One', sans-serif;
+    background-color: #FE5E41;
+    color: #ffffff;
+    margin-top: 10px;
+    padding: 8px;
+    border-style: none;
+    border-radius: 6px;
+}
+
+/* APLICATIVO */
 
 /* CONTEUDO, CORPO */
 #tag {
-    color: #0b050048;
+    color: #0b050073;
     font-size: 14px;
 }
 
 #explicacao, #tag {
+    font-family: 'Roboto', sans-serif;
+    max-width: 750px;
+    margin: 0 auto;
     padding: 18px;
+    line-height: 22px;
+}
+
+#explicacao h1 {
+    font-family: 'Secular One', sans-serif;
+    font-size: 32px;
+    line-height: 32px;
+}
+
+/* RODAPE */
+footer {
+    font-family: 'Secular One', sans-serif;
+    font-weight: bolder;
+    font-size: 14px;
+    background-color: #00A878;
+    padding: 15px;
+}
+
+footer a {  
+    color: #000000;
+    text-decoration: none;
+    text-decoration-style: none;
 }

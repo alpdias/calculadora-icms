@@ -19,8 +19,8 @@ Criado em 07/2020
         </header>
         <main id="principal">
             <section id="app">
-                <div class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>
-                <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>
+                <div><span class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></span></div></br>
+                <div><span class="titulos-entrada">UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>
                 <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">
                     <option value="">UF</option>
                     <option value="Acre">AC</option>
@@ -50,10 +50,10 @@ Criado em 07/2020
                     <option value="São Paulo">SP</option>
                     <option value="Sergipe">SE</option>
                     <option value="Tocantins">TO</option>
-                </select></br></div>
+                </select></span></div></br>
+                <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">&nbsp;ICMS</label>
+                <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">&nbsp;ICMS-ST</label></br>
                 <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>
-                <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>
-                <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>
             </section>
             <section id="resultado"></section>
             <article id="explicacao">
@@ -104,8 +104,8 @@ Criado em 07/2020
             </section>
         </main>
         <footer>
-            COPYRIGHT &copy; 2020 | <a href="https://github.com/alpdias" target="_blank">PAULO</a>
+            COPYRIGHT &copy; 2020 | <a href="https://paulodeveloper.netlify.app/" target="_blank">PAULO</a>
         </footer>
-        <script src="bundle.js"></script>
+        <script src="../src/main.js"></script>
     </body>
 </html>
