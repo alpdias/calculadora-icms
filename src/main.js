@@ -7,6 +7,7 @@ function carregarOrigem() { // funçao para mostrar no elemento 'input' o valor 
 
     var carregar = origemSelect.value;
     origem.value = carregar;
+
     var aliquotaOrigem = 0;
     var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
@@ -91,7 +92,7 @@ function calculoSimples() { // funçao para calcular o valor do ICMS
         var baseNumero = parseFloat(base);
         var baseFormat = baseNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
         var baseResposta = baseNumero.toLocaleString('pt-br', {minimumFractionDigits: 2});
-        var valorOrigemFormat = valorOrigem.toLocaleString('pt-br', {minimumFractionDigits: 2});
+        var valorOrigemFormat = parseInt(valorOrigem);
         var calculoFormart = calculo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
         var calculoResposta = calculo.toLocaleString('pt-br', {minimumFractionDigits: 2});
 
@@ -207,7 +208,6 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
 function simples() { // funçao para verificar se o elemento 'radio' no html esta preenchido e inserir um novo html
 
     if (document.querySelector('#simples').checked = true) { // verificar 'radio' checked
-
         document.querySelector('#app').innerHTML = '\
         <div class="corpo-entrada">\
             <div class="container-entrada"><span class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></span></div></br>\
@@ -250,7 +250,6 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
         document.querySelector('#resultado').innerHTML = '';
 
     } else if (document.querySelector('#interestadual').checked = true) {
-
         document.querySelector('#app').innerHTML = '\
         <div class="corpo-entrada">\
             <div class="container-entrada"><span class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></span></div></br>\
@@ -291,9 +290,7 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
         </div>'; // inserir html 
 
         document.querySelector('#resultado').innerHTML = '';
-            
     };
-
 };
 
 function carregarDestino() { // funçao para mostrar no elemento 'input' o valor selecionado
@@ -302,6 +299,7 @@ function carregarDestino() { // funçao para mostrar no elemento 'input' o valor
     var destinoSelect = document.querySelector('#destinoSelect'); //console.log(origemSelect[2].text); tag 'select' pode ser usada com index
     var carregar = destinoSelect.value;
     destino.value = carregar;
+
     var aliquotaDestino = 0;
     var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
@@ -1891,7 +1889,7 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
     };
     
     var mva = document.querySelector('#mva').value; // valor do elemento 'input' com id '#mva' (valor da aliquota de MVA)
-    var mvaNumero = parseFloat(mva);
+    var mvaNumero = parseInt(mva);
 
     if (mvaNumero === '') {
         mvaNumero = -0;
@@ -1920,17 +1918,17 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
 
     } else {
 
-        var calculoBaseInter = (parseInt(baseNumero) + parseInt(freteNumero) + parseInt(seguroNumero) + parseInt(despesaNumero) - parseInt(desconto)); // base de calculo para o valor do ICMS
-        var valorICMS = calculoBaseInter * (parseInt(valorInter) / 100); // valor do ICMS
-        var calculoBaseST = (parseInt(baseNumero) + parseInt(ipiNumero) + parseInt(freteNumero) + parseInt(seguroNumero) + parseInt(despesaNumero) - parseInt(descontoNumero)) * (1 + (parseInt(mvaNumero) / 100)); // base de calculo para o valor do ICMS ST
-        var valorST = (calculoBaseST * (parseInt(valorDestino) / 100)) - valorICMS; // valor do ICMS ST
+        var calculoBaseInter = (baseNumero + freteNumero + seguroNumero + despesaNumero - descontoNumero); // base de calculo para o valor do ICMS
+        var valorICMS = calculoBaseInter * (valorInter / 100); // valor do ICMS
+        var calculoBaseST = (baseNumero + ipiNumero + freteNumero + seguroNumero + despesaNumero - descontoNumero) * (1 + mvaNumero / 100); // base de calculo para o valor do ICMS ST
+        var valorST = (calculoBaseST * valorDestino / 100) - valorICMS; // valor do ICMS ST
 
-        baseFormat = baseNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-        ipiFormat = ipiNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-        freteFormat = freteNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-        despesaFormat = despesaNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-        descontoFormat = descontoNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-        mvaFormat = mvaNumero.toLocaleString('pt-br', {minimumFractionDigits: 2});
+        var baseFormat = baseNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        var ipiFormat = ipiNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        var freteFormat = freteNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        var despesaFormat = despesaNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        var descontoFormat = descontoNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        var seguroFormat = seguroNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 
         document.querySelector('#resultado').innerHTML = `\
             <div id="tabelaResultadoCompleto" class="tabelas">\
@@ -1948,6 +1946,10 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
                         <td>${freteFormat}</td>\
                     </tr>\
                     <tr>\
+                        <td>Valor do Seguro:</td>\
+                        <td>${seguroFormat}</td>\
+                    </tr>\
+                    <tr>\
                         <td>Valor das Despesas:</td>\
                         <td>${despesaFormat}</td>\
                     </tr>\
@@ -1957,7 +1959,7 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
                     </tr>\
                     <tr>\
                         <td>Alíquota MVA:</td>\
-                        <td>${mvaFormat}%</td>\
+                        <td>${mvaNumero}%</td>\
                     </tr>\
                     <tr>\
                         <td>Alíquota ${origemText}:</td>\
@@ -1984,11 +1986,11 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
             </div>\
             <div id="memoriaCompleta" class="memoria">\
                 <h2>Memória de Cálculo:</strong></h2>\
-                <p>Base do ICMS Interestadual = (${base} + ${frete} + ${seguro} + ${despesa} - ${desconto})</p>\
-                <p>Valor do ICMS Interestadual = ${calculoBaseInter} x (${valorInter}% / 100)</p>\
-                <p>Base do ICMS-ST = (${base} + ${ipi} + ${frete} + ${seguro} + ${despesa} - ${desconto}) x (1 + (${mva}% / 100))</p>\
-                <p>Valor do ICMS-ST = (${calculoBaseST} x (${valorDestino}% / 100)) - ${valorICMS}</p>\
-                <p>Valor do ICMS-ST = ${valorST}</p>\
+                <p>Base do ICMS Interestadual = (${baseNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})} + ${freteNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})} + ${seguroNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})} + ${despesaNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})} - ${descontoNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})})</p>\
+                <p>Valor do ICMS Interestadual = ${calculoBaseInter.toLocaleString('pt-br', {minimumFractionDigits: 2})} x (${valorInter.toLocaleString('pt-br', {minimumFractionDigits: 2})}% / 100)</p>\
+                <p>Base do ICMS-ST = (${baseNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})} + ${ipiNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})} + ${freteNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})} + ${seguroNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})} + ${despesaNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})} - ${descontoNumero.toLocaleString('pt-br', {minimumFractionDigits: 2})}) x (1 + (${mvaNumero}% / 100))</p>\
+                <p>Valor do ICMS-ST = (${calculoBaseST.toLocaleString('pt-br', {minimumFractionDigits: 2})} x (${valorDestino}% / 100)) - ${valorICMS.toLocaleString('pt-br', {minimumFractionDigits: 2})}</p>\
+                <p>Valor do ICMS-ST = ${valorST.toLocaleString('pt-br', {minimumFractionDigits: 2})}</p>\
             </div>`; // elemento 'table' e 'p' do html com os resultados
     };
 };
