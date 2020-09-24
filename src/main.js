@@ -7,9 +7,7 @@ function carregarOrigem() { // funçao para mostrar no elemento 'input' o valor 
 
     var carregar = origemSelect.value;
     origem.value = carregar;
-
     var aliquotaOrigem = 0;
-
     var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
     if (origemText === 'AC') {
@@ -71,59 +69,56 @@ function carregarOrigem() { // funçao para mostrar no elemento 'input' o valor 
     };
 
     return aliquotaOrigem;
-
 };
 
 function calculoSimples() { // funçao para calcular o valor do ICMS
 
     var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option'no html
-
     var base = document.querySelector('#base').value; // valor do elemento 'input' com id '#base' (valor para base de calculo)
-
     var valorOrigem = carregarOrigem(); // valor da aliquota de origem
-
     var calculo = parseInt(base) * (parseInt(valorOrigem) / 100); // calculo do valor devido do ICMS simples
 
     if (base === '' && origemText === 'UF') {
-
         window.alert('Preencha todos os campos!');
 
     } else if (base === '') {
-
         window.alert('Preencha o "Valor do Produto"!');
 
     } else if (origemText === 'UF') {
-
         window.alert('Selecione uma UF!');
 
     } else {
+        var baseNumero = parseFloat(base);
+        var baseFormat = baseNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        var baseResposta = baseNumero.toLocaleString('pt-br', {minimumFractionDigits: 2});
+        var valorOrigemFormat = valorOrigem.toLocaleString('pt-br', {minimumFractionDigits: 2});
+        var calculoFormart = calculo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        var calculoResposta = calculo.toLocaleString('pt-br', {minimumFractionDigits: 2});
 
         document.querySelector('#resultado').innerHTML = `\
             <div id="tabelaResultadoSimples" class="tabelas">\
                 <table>\
                     <tr>\
                         <td>Valor do Produto:</td>\
-                        <td>R$ ${base}</td>\
+                        <td>${baseFormat}</td>\
                     </tr>\
                     <tr>\
                         <td>Alíquota ${origemText}:</td>\
-                        <td>${valorOrigem}%</td>\
+                        <td>${valorOrigemFormat}%</td>\
                     </tr>\
                     <tr>\
                         <td>Valor do ICMS:</td>\
-                        <td>R$ ${calculo}</td>\
+                        <td>${calculoFormart}</td>\
                     </tr>\
                 </table>\
                 <button name="novo" id="novo" onclick="simples()">Recalcular</button>\
             </div>\
             <div id="memoriaSimples" class="memoria">\
                 <h2>Memória de Cálculo:</h2>\
-                <p>Valor do ICMS = ${base} x ${valorOrigem}%</p>\
-                <p>Valor do ICMS = ${calculo}</p>\
+                <p>Valor do ICMS = ${baseResposta} x ${valorOrigemFormat}%</p>\
+                <p>Valor do ICMS = ${calculoResposta}</p>\
             </div>`; // elemento 'table' e 'p' do html com os resultados
-
     };
-    
 };
 
 function complemento() { // funçao para verificar se o elemento 'radio' no html esta preenchido e inserir o novo html
@@ -207,7 +202,6 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
         </div>'; // inserir html 
     
     document.querySelector('#resultado').innerHTML = '';
-
 };
 
 function simples() { // funçao para verificar se o elemento 'radio' no html esta preenchido e inserir um novo html
@@ -306,12 +300,9 @@ function carregarDestino() { // funçao para mostrar no elemento 'input' o valor
 
     var destino = document.querySelector('#destino');
     var destinoSelect = document.querySelector('#destinoSelect'); //console.log(origemSelect[2].text); tag 'select' pode ser usada com index
-
     var carregar = destinoSelect.value;
     destino.value = carregar;
-
     var aliquotaDestino = 0;
-
     var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
 
     if (destinoText === 'AC') {
@@ -373,17 +364,14 @@ function carregarDestino() { // funçao para mostrar no elemento 'input' o valor
     };
 
     return aliquotaDestino;
-
 };
 
 function interestadual() {
 
     var origemSelect = document.querySelector('#origemSelect'); //console.log(origemSelect[2].text); tag 'select' pode ser usada com index
     var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
-
     var destinoSelect = document.querySelector('#destinoSelect'); //console.log(origemSelect[2].text); tag 'select' pode ser usada com index
     var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
-
     var aliquotaInter = 0;
     
     if (origemText === 'AC' && destinoText === 'AC') {
@@ -1849,127 +1837,127 @@ function interestadual() {
     };
 
     return aliquotaInter;
-
 };
 
 function calculoComplemento() { // funçao para calcular o valor do ICMS ST
 
     var origemText = origemSelect.options[origemSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
-
     var destinoText = destinoSelect.options[destinoSelect.selectedIndex].text; // obter o valor dentro do elemento 'option' no html
-
     var base = document.querySelector('#base').value; // valor do elemento 'input' com id '#base' (valor para base de calculo)
-    
+    var baseNumero = parseFloat(base);
     var ipi = document.querySelector('#ipi').value; // valor do elemento 'input' com id '#ipi' (valor do ipi)
+    var ipiNumero = parseFloat(ipi);
 
-    if (ipi === '') {
-        ipi = 0;
+    if (ipiNumero === '') {
+        ipiNumero = 0;
     } else {
-        ipi = ipi;
+        ipiNumero = ipiNumero;
     };
     
     var frete = document.querySelector('#frete').value; // valor do elemento 'input' com id '#frete' (valor do frete)
+    var freteNumero = parseFloat(frete);
 
-    if (frete === '') {
-        frete = 0;
+    if (freteNumero === '') {
+        freteNumero = 0;
     } else {
-        frete = frete;
+        freteNumero = freteNumero;
     };
     
     var seguro = document.querySelector('#seguro').value; // valor do elemento 'input' com id '#seguro' (valor do seguro)
+    var seguroNumero = parseFloat(seguro);
 
-    if (seguro === '') {
-        seguro = 0;
+    if (seguroNumero === '') {
+        seguroNumero = 0;
     } else {
-        seguro = seguro;
+        seguroNumero = seguroNumero;
     };
     
     var despesa = document.querySelector('#despesa').value; // valor do elemento 'input' com id '#despesa' (valor das despesas)
+    var despesaNumero = parseFloat(despesa);
 
-    if (despesa === '') {
-        despesa = 0;
+    if (despesaNumero === '') {
+        despesaNumero = 0;
     } else {
-        despesa = despesa;
+        despesaNumero = despesaNumero;
     };
     
     var desconto = document.querySelector('#desconto').value; // valor do elemento 'input' com id '#desconto' (valor dos descontos)
+    var descontoNumero = parseFloat(desconto);
 
-    if (desconto === '') {
-        desconto = 0;
+    if (descontoNumero === '') {
+        descontoNumero = 0;
     } else {
-        desconto = desconto;
+        descontoNumero = descontoNumero;
     };
     
     var mva = document.querySelector('#mva').value; // valor do elemento 'input' com id '#mva' (valor da aliquota de MVA)
+    var mvaNumero = parseFloat(mva);
 
-    if (mva === '') {
-        mva = -0;
+    if (mvaNumero === '') {
+        mvaNumero = -0;
     } else {
-        mva = mva;
+        mvaNumero = mvaNumero;
     };
 
     var valorOrigem = carregarOrigem(); // valor da aliquota de origem
-
     var valorDestino = carregarDestino(); // valor da aliquota de destino
-
     var valorInter = interestadual(); // valor da aliquota interestadual
 
     if (base === '' && origemText === 'UF' && destinoText === 'UF') {
-
         window.alert('Preencha pelo menos o "Valor do Produto" e selecione a UF de origem e destino!');
 
     } else if (base === '') {
-
         window.alert('Preencha o "Valor do Produto"!');
 
     } else if (origemText === 'UF' && destinoText === 'UF') {
-
         window.alert('Selecione a UF de origem e destino!');
 
     } else if (origemText === 'UF') {
-
         window.alert('Selecione a UF de origem!');
 
     } else if (destinoText === 'UF') {
-
         window.alert('Selecione a UF de destino!');
 
     } else {
 
-        var calculoBaseInter = (parseInt(base) + parseInt(frete) + parseInt(seguro) + parseInt(despesa) - parseInt(desconto)); // base de calculo para o valor do ICMS
-    
+        var calculoBaseInter = (parseInt(baseNumero) + parseInt(freteNumero) + parseInt(seguroNumero) + parseInt(despesaNumero) - parseInt(desconto)); // base de calculo para o valor do ICMS
         var valorICMS = calculoBaseInter * (parseInt(valorInter) / 100); // valor do ICMS
-        
-        var calculoBaseST = (parseInt(base) + parseInt(ipi) + parseInt(frete) + parseInt(seguro) + parseInt(despesa) - parseInt(desconto)) * (1 + (parseInt(mva) / 100)); // base de calculo para o valor do ICMS ST
-        
+        var calculoBaseST = (parseInt(baseNumero) + parseInt(ipiNumero) + parseInt(freteNumero) + parseInt(seguroNumero) + parseInt(despesaNumero) - parseInt(descontoNumero)) * (1 + (parseInt(mvaNumero) / 100)); // base de calculo para o valor do ICMS ST
         var valorST = (calculoBaseST * (parseInt(valorDestino) / 100)) - valorICMS; // valor do ICMS ST
+
+        baseFormat = baseNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        ipiFormat = ipiNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        freteFormat = freteNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        despesaFormat = despesaNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        descontoFormat = descontoNumero.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        mvaFormat = mvaNumero.toLocaleString('pt-br', {minimumFractionDigits: 2});
 
         document.querySelector('#resultado').innerHTML = `\
             <div id="tabelaResultadoCompleto" class="tabelas">\
                 <table>\
                     <tr>\
                         <td>Valor do Produto:</td>\
-                        <td>R$ ${base}</td>\
+                        <td>${baseFormat}</td>\
                     </tr>\
                     <tr>\
                         <td>Valor do IPI:</td>\
-                        <td>R$ ${ipi}</td>\
+                        <td>${ipiFormat}</td>\
                     </tr>\
                     <tr>\
                         <td>Valor do Frete:</td>\
-                        <td>R$ ${frete}</td>\
+                        <td>${freteFormat}</td>\
                     </tr>\
                     <tr>\
                         <td>Valor das Despesas:</td>\
-                        <td>R$ ${despesa}</td>\
+                        <td>${despesaFormat}</td>\
                     </tr>\
                     <tr>\
                         <td>Valor dos Descontos:</td>\
-                        <td>R$ ${desconto}</td>\
+                        <td>${descontoFormat}</td>\
                     </tr>\
                     <tr>\
                         <td>Alíquota MVA:</td>\
-                        <td>${mva}%</td>\
+                        <td>${mvaFormat}%</td>\
                     </tr>\
                     <tr>\
                         <td>Alíquota ${origemText}:</td>\
@@ -1985,11 +1973,11 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
                     </tr>\
                     <tr>\
                         <td>Base de Cálculo:</td>\
-                        <td>R$ ${calculoBaseST}</td>\
+                        <td>${calculoBaseST.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</td>\
                     </tr>\
                     <tr>\
                         <td>Valor do ICMS ST:</td>\
-                        <td>R$ ${valorST}</td>\
+                        <td>${valorST.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</td>\
                      </tr>\
                 </table>\
                 <button name="novo" id="novo" onclick="complemento()">Recalcular</button>\
@@ -2002,7 +1990,5 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
                 <p>Valor do ICMS-ST = (${calculoBaseST} x (${valorDestino}% / 100)) - ${valorICMS}</p>\
                 <p>Valor do ICMS-ST = ${valorST}</p>\
             </div>`; // elemento 'table' e 'p' do html com os resultados
-
     };
-    
 };
