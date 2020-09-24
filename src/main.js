@@ -1846,7 +1846,7 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
     var ipi = document.querySelector('#ipi').value; // valor do elemento 'input' com id '#ipi' (valor do ipi)
     var ipiNumero = parseFloat(ipi);
 
-    if (ipiNumero === '') {
+    if (ipiNumero === '' || isNaN(ipiNumero)) {
         ipiNumero = 0;
     } else {
         ipiNumero = ipiNumero;
@@ -1855,7 +1855,7 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
     var frete = document.querySelector('#frete').value; // valor do elemento 'input' com id '#frete' (valor do frete)
     var freteNumero = parseFloat(frete);
 
-    if (freteNumero === '') {
+    if (freteNumero === '' || isNaN(freteNumero)) {
         freteNumero = 0;
     } else {
         freteNumero = freteNumero;
@@ -1864,7 +1864,7 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
     var seguro = document.querySelector('#seguro').value; // valor do elemento 'input' com id '#seguro' (valor do seguro)
     var seguroNumero = parseFloat(seguro);
 
-    if (seguroNumero === '') {
+    if (seguroNumero === '' || isNaN(seguroNumero)) {
         seguroNumero = 0;
     } else {
         seguroNumero = seguroNumero;
@@ -1873,7 +1873,7 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
     var despesa = document.querySelector('#despesa').value; // valor do elemento 'input' com id '#despesa' (valor das despesas)
     var despesaNumero = parseFloat(despesa);
 
-    if (despesaNumero === '') {
+    if (despesaNumero === '' || isNaN(despesaNumero)) {
         despesaNumero = 0;
     } else {
         despesaNumero = despesaNumero;
@@ -1882,16 +1882,16 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
     var desconto = document.querySelector('#desconto').value; // valor do elemento 'input' com id '#desconto' (valor dos descontos)
     var descontoNumero = parseFloat(desconto);
 
-    if (descontoNumero === '') {
+    if (descontoNumero === '' || isNaN(descontoNumero)) {
         descontoNumero = 0;
     } else {
         descontoNumero = descontoNumero;
     };
-    
+
     var mva = document.querySelector('#mva').value; // valor do elemento 'input' com id '#mva' (valor da aliquota de MVA)
     var mvaNumero = parseInt(mva);
 
-    if (mvaNumero === '') {
+    if (mvaNumero === '' || isNaN(mvaNumero)) {
         mvaNumero = -0;
     } else {
         mvaNumero = mvaNumero;
