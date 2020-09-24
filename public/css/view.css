@@ -53,7 +53,7 @@ header {
     background-color: #ffea32;
     color: #000000;;
     font-weight: bolder;
-    padding: 15px;
+    padding: 8px;
     position: fixed;
     width: 100%;
     box-shadow: 2px 2px 6px #00000098;
@@ -62,7 +62,7 @@ header {
 /* ENTRADAS */
 #app {
     background-color: #00A878;
-    padding-top: 30px;
+    padding-top: 15px;
     padding-bottom: 30px;
 }
 
@@ -109,6 +109,11 @@ button {
     border-style: none;
     border-radius: 6px;
     box-shadow: 2px 2px 6px #00000098;
+}
+
+
+.opcao , select, button:hover {
+    cursor: pointer;
 }
 
 /* CONTEUDO, CORPO */
@@ -182,4 +187,11 @@ footer a {
     border-color: #00A878;
     padding-left: 6px;
     padding-right: 6px;
+}
+
+/* IMAGEM */
+
+img {
+    border-style: none;
+    box-shadow: 2px 2px 6px #00000098;
 }
