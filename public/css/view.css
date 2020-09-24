@@ -54,6 +54,9 @@ header {
     color: #000000;;
     font-weight: bolder;
     padding: 15px;
+    position: fixed;
+    width: 100%;
+    box-shadow: 2px 2px 6px #00000098;
 }
 
 /* ENTRADAS */
@@ -63,6 +66,11 @@ header {
     padding-bottom: 30px;
 }
 
+.corpo-entrada {
+    margin-top: 120px;
+    display: block;
+}
+
 .titulos-entrada {
     font-family: 'Secular One', sans-serif;
     background-color: #ffea32;
@@ -70,9 +78,16 @@ header {
     padding: 4px;
     border-style: none;
     border-radius: 6px;
+    box-shadow: 2px 2px 6px #00000098;
+}
+.opcao {
+    font-family: 'Secular One', sans-serif;
 }
 
 input {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-weight: normal;
     padding: 4px;
     margin-left: 6px;
     border-style: none;
@@ -93,9 +108,8 @@ button {
     padding: 8px;
     border-style: none;
     border-radius: 6px;
+    box-shadow: 2px 2px 6px #00000098;
 }
-
-/* APLICATIVO */
 
 /* CONTEUDO, CORPO */
 #tag {
@@ -130,4 +144,42 @@ footer a {
     color: #000000;
     text-decoration: none;
     text-decoration-style: none;
+}
+
+/* RESULTADO */
+#resultado {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.tabelas {
+    display: block;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.tabelas table {
+    display: table;
+    max-width: 750px;
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.tabelas td {
+    background-color: rgba(128, 128, 128, 0.445);
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    padding: 8px;
+}
+
+.memoria {
+    display: block;
+    max-width: 750px;
+    margin: 0 auto;
+    margin-top: 15px;
+    border-style: dotted;
+    border-color: #00A878;
+    padding-left: 6px;
+    padding-right: 6px;
 }
