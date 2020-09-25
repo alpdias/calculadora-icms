@@ -4,7 +4,7 @@ WebSite criado para realizar de maneira simples e rápida o cálculo de imposto 
 
 <strong>Disponível no meu portifólio:</strong> https://paulodeveloper.netlify.com/
 
-Andamento -> <strong>90%</strong> - Offline
+Andamento -> <strong>99%</strong> - Offline
 
 JavaScript </br>
 HTML5 | CSS3 </br>
@@ -12,7 +12,7 @@ Microsoft VSCode 1.46.1 </br>
 Codificação: -&lowast;- coding: utf-8 -&lowast;- </br>
 pt-BR </br> 
 
-![calculadora-icms-resultado]()
+![calculadora-icms-resultado](https://github.com/alpdias/calculadora-icms-js/blob/master/img/calculadora-icms-resultado.jpg)
 
 ---------------------------------------------------------------------------------------------
 
@@ -22,7 +22,7 @@ WebSite created to easily and quickly calculate the ICMS tax, showing the calcul
 
 <strong>Available in my portfolio:</strong> https://paulodeveloper.netlify.com/
 
-Progress -> <strong>90%</strong> - Offline
+Progress -> <strong>99%</strong> - Offline
 
 JavaScript </br>
 HTML5 | CSS3 </br>
@@ -30,6 +30,6 @@ Microsoft VSCode 1.46.1 </br>
 Coding: -&lowast;- coding: utf-8 -&lowast;- </br>
 pt-BR </br>
 
-![calculadora-icms-resultado]()
+![calculadora-icms-resultado](https://github.com/alpdias/calculadora-icms-js/blob/master/img/calculadora-icms-resultado.jpg)
 
 --------------------------------------------------------------------------------------------
