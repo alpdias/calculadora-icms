@@ -92,7 +92,23 @@ function calculoSimples() {
   } else if (origemText === 'UF') {
     window.alert('Selecione uma UF!');
   } else {
-    document.querySelector('#resultado').innerHTML = "            <div id=\"tabelaResultadoSimples\">                <table>                    <tr>                        <td>Valor do Produto:</td>                        <td>R$ ".concat(base, "</td>                    </tr>                    <tr>                        <td>Al\xEDquota ").concat(origemText, ":</td>                        <td>").concat(valorOrigem, "%</td>                    </tr>                    <tr>                        <td>Valor do ICMS:</td>                        <td>R$ ").concat(calculo, "</td>                    </tr>                </table>                <button name=\"novo\" id=\"novo\" onclick=\"simples()\">Recalcular</button>            </div>            <div id=\"memoriaSimples\">                <h2>Mem\xF3ria de C\xE1lculo:</h2>                <p>Valor do ICMS = ").concat(base, " x ").concat(valorOrigem, "%</p>                <p>Valor do ICMS = ").concat(calculo, "</p>            </div>"); // elemento 'table' e 'p' do html com os resultados
+    var baseNumero = parseFloat(base);
+    var baseFormat = baseNumero.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+    var baseResposta = baseNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    });
+    var valorOrigemFormat = parseInt(valorOrigem);
+    var calculoFormart = calculo.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+    var calculoResposta = calculo.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    });
+    document.querySelector('#resultado').innerHTML = "            <div id=\"tabelaResultadoSimples\" class=\"tabelas\">                <table>                    <tr>                        <td>Valor do Produto:</td>                        <td>".concat(baseFormat, "</td>                    </tr>                    <tr>                        <td>Al\xEDquota ").concat(origemText, ":</td>                        <td>").concat(valorOrigemFormat, "%</td>                    </tr>                    <tr>                        <td>Valor do ICMS:</td>                        <td>").concat(calculoFormart, "</td>                    </tr>                </table>                <a href=\"#principal\"><button name=\"novo\" id=\"novo\" onclick=\"simples()\">Recalcular</button></a>            </div>            <div id=\"memoriaSimples\" class=\"memoria\">                <h2>Mem\xF3ria de C\xE1lculo:</h2>                <p>Valor do ICMS = ").concat(baseResposta, " x ").concat(valorOrigemFormat, "%</p>                <p>Valor do ICMS = ").concat(calculoResposta, "</p>            </div>"); // elemento 'table' e 'p' do html com os resultados
   }
 
   ;
@@ -105,78 +121,80 @@ function complemento() {
   document.querySelector('#interestadual').checked = true; // verificar 'radio' checked
 
   document.querySelector('#app').innerHTML = '\
-        <div class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
-        <div>R$<input type="number" name="ipi" id="ipi" placeholder="Valor do IPI" autocomplete="off" inputmode="numeric"/></br></div>\
-        <div>R$<input type="number" name="frete" id="frete" placeholder="Valor do Frete" autocomplete="off" inputmode="numeric"/></br></div>\
-        <div>R$<input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro" autocomplete="off" inputmode="numeric"/></br></div>\
-        <div>R$<input type="number" name="despesa" id="despesa" placeholder="Outras Despesas" autocomplete="off" inputmode="numeric"/></br></div>\
-        <div>R$<input type="number" name="desconto" id="desconto" placeholder="Descontos" autocomplete="off" inputmode="numeric"/></br></div>\
-        <div>%<input type="number" name="mva" id="mva" placeholder="MVA %" autocomplete="off" inputmode="numeric"/></br></div>\
-        <div>UF<input type="text" name="origem" id="origem" placeholder="Estado Origem" autocomplete="off"/>\
-        <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
-            <option value="">UF</option>\
-            <option value="Acre">AC</option>\
-            <option value="Alagoas">AL</option>\
-            <option value="Amapá">AP</option>\
-            <option value="Amazonas">AM</option>\
-            <option value="Bahia">BA</option>\
-            <option value="Ceará">CE</option>\
-            <option value="Distrito Federal">DF</option>\
-            <option value="Espírito Santo">ES</option>\
-            <option value="Goiás">GO</option>\
-            <option value="Maranhão">MA</option>\
-            <option value="Mato Grosso">MT</option>\
-            <option value="Mato Grosso do Sul">MS</option>\
-            <option value="Minas Gerais">MG</option>\
-            <option value="Pará">PA</option>\
-            <option value="Paraíba">PB</option>\
-            <option value="Paraná">PR</option>\
-            <option value="Pernambuco">PE</option>\
-            <option value="Piauí">PI</option>\
-            <option value="Rio de Janeiro">RJ</option>\
-            <option value="Rio Grande do Norte">RN</option>\
-            <option value="Rio Grande do Sul">RS</option>\
-            <option value="Rondônia">RO</option>\
-            <option value="Roraima">RR</option>\
-            <option value="Santa Catarina">SC</option>\
-            <option value="São Paulo">SP</option>\
-            <option value="Sergipe">SE</option>\
-            <option value="Tocantins">TO</option>\
-        </select></br></div>\
-        <div>UF<input type="text" name="destino" id="destino" placeholder="Estado Destino" autocomplete="off"/>\
-        <select name="destinoSelect" id="destinoSelect" onclick="carregarDestino()">\
-            <option value="">UF</option>\
-            <option value="Acre">AC</option>\
-            <option value="Alagoas">AL</option>\
-            <option value="Amapá">AP</option>\
-            <option value="Amazonas">AM</option>\
-            <option value="Bahia">BA</option>\
-            <option value="Ceará">CE</option>\
-            <option value="Distrito Federal">DF</option>\
-            <option value="Espírito Santo">ES</option>\
-            <option value="Goiás">GO</option>\
-            <option value="Maranhão">MA</option>\
-            <option value="Mato Grosso">MT</option>\
-            <option value="Mato Grosso do Sul">MS</option>\
-            <option value="Minas Gerais">MG</option>\
-            <option value="Pará">PA</option>\
-            <option value="Paraíba">PB</option>\
-            <option value="Paraná">PR</option>\
-            <option value="Pernambuco">PE</option>\
-            <option value="Piauí">PI</option>\
-            <option value="Rio de Janeiro">RJ</option>\
-            <option value="Rio Grande do Norte">RN</option>\
-            <option value="Rio Grande do Sul">RS</option>\
-            <option value="Rondônia">RO</option>\
-            <option value="Roraima">RR</option>\
-            <option value="Santa Catarina">SC</option>\
-            <option value="São Paulo">SP</option>\
-            <option value="Sergipe">SE</option>\
-            <option value="Tocantins">TO</option>\
-        </select></br></div>\
-        <button name="calcular" id="calcular" onclick="calculoComplemento()">Calcular</button>\
-        <input type="radio" name="Inter" id="simples" onclick="simples()"/><label for="simples">ICMS</label>\
-        <input type="radio" name="Inter" id="interestadual" checked onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
+        <div class="corpo-entrada">\
+            <div class="container-entrada"><span class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></span></div></br>\
+            <div class="container-entrada"><span class="titulos-entrada">R$<input type="number" name="ipi" id="ipi" placeholder="Valor do IPI" autocomplete="off" inputmode="numeric"/></span></div></br>\
+            <div class="container-entrada"><span class="titulos-entrada">R$<input type="number" name="frete" id="frete" placeholder="Valor do Frete" autocomplete="off" inputmode="numeric"/></span></div></br>\
+            <div class="container-entrada"><span class="titulos-entrada">R$<input type="number" name="seguro" id="seguro" placeholder="Valor do Seguro" autocomplete="off" inputmode="numeric"/></span></div></br>\
+            <div class="container-entrada"><span class="titulos-entrada">R$<input type="number" name="despesa" id="despesa" placeholder="Outras Despesas" autocomplete="off" inputmode="numeric"/></span></div></br>\
+            <div class="container-entrada"><span class="titulos-entrada">R$<input type="number" name="desconto" id="desconto" placeholder="Descontos" autocomplete="off" inputmode="numeric"/></span></div></br>\
+            <div class="container-entrada"><span class="titulos-entrada"><strong>%</strong><input type="number" name="mva" id="mva" placeholder="MVA %" autocomplete="off" inputmode="numeric"/></span></div></br>\
+            <div class="container-entrada"><span class="titulos-entrada">UF<input type="text" name="origem" id="origem" placeholder="Estado Origem" autocomplete="off"/>\
+            <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
+                <option value="">UF</option>\
+                <option value="Acre">AC</option>\
+                <option value="Alagoas">AL</option>\
+                <option value="Amapá">AP</option>\
+                <option value="Amazonas">AM</option>\
+                <option value="Bahia">BA</option>\
+                <option value="Ceará">CE</option>\
+                <option value="Distrito Federal">DF</option>\
+                <option value="Espírito Santo">ES</option>\
+                <option value="Goiás">GO</option>\
+                <option value="Maranhão">MA</option>\
+                <option value="Mato Grosso">MT</option>\
+                <option value="Mato Grosso do Sul">MS</option>\
+                <option value="Minas Gerais">MG</option>\
+                <option value="Pará">PA</option>\
+                <option value="Paraíba">PB</option>\
+                <option value="Paraná">PR</option>\
+                <option value="Pernambuco">PE</option>\
+                <option value="Piauí">PI</option>\
+                <option value="Rio de Janeiro">RJ</option>\
+                <option value="Rio Grande do Norte">RN</option>\
+                <option value="Rio Grande do Sul">RS</option>\
+                <option value="Rondônia">RO</option>\
+                <option value="Roraima">RR</option>\
+                <option value="Santa Catarina">SC</option>\
+                <option value="São Paulo">SP</option>\
+                <option value="Sergipe">SE</option>\
+                <option value="Tocantins">TO</option>\
+            </select></span></div></br>\
+            <div class="container-entrada"><span class="titulos-entrada">UF<input type="text" name="destino" id="destino" placeholder="Estado Destino" autocomplete="off"/>\
+            <select name="destinoSelect" id="destinoSelect" onclick="carregarDestino()">\
+                <option value="">UF</option>\
+                <option value="Acre">AC</option>\
+                <option value="Alagoas">AL</option>\
+                <option value="Amapá">AP</option>\
+                <option value="Amazonas">AM</option>\
+                <option value="Bahia">BA</option>\
+                <option value="Ceará">CE</option>\
+                <option value="Distrito Federal">DF</option>\
+                <option value="Espírito Santo">ES</option>\
+                <option value="Goiás">GO</option>\
+                <option value="Maranhão">MA</option>\
+                <option value="Mato Grosso">MT</option>\
+                <option value="Mato Grosso do Sul">MS</option>\
+                <option value="Minas Gerais">MG</option>\
+                <option value="Pará">PA</option>\
+                <option value="Paraíba">PB</option>\
+                <option value="Paraná">PR</option>\
+                <option value="Pernambuco">PE</option>\
+                <option value="Piauí">PI</option>\
+                <option value="Rio de Janeiro">RJ</option>\
+                <option value="Rio Grande do Norte">RN</option>\
+                <option value="Rio Grande do Sul">RS</option>\
+                <option value="Rondônia">RO</option>\
+                <option value="Roraima">RR</option>\
+                <option value="Santa Catarina">SC</option>\
+                <option value="São Paulo">SP</option>\
+                <option value="Sergipe">SE</option>\
+                <option value="Tocantins">TO</option>\
+            </select></span></div></br>\
+            <input type="radio" name="Inter" id="simples" onclick="simples()"/><label for="simples"><span class="opcao">&nbsp;ICMS</span></label>\
+            <input type="radio" name="Inter" id="interestadual" checked onclick="complemento()"/><label for="interestadual"><span class="opcao">&nbsp;ICMS-ST</span></label></br>\
+            <a href="#simples"><button name="calcular" id="calcular" onclick="calculoComplemento()">Calcular</button></a>\
+        </div>'; // inserir html 
 
   document.querySelector('#resultado').innerHTML = '';
 }
@@ -188,8 +206,9 @@ function simples() {
   if (document.querySelector('#simples').checked = true) {
     // verificar 'radio' checked
     document.querySelector('#app').innerHTML = '\
-            <div class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
-            <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
+        <div class="corpo-entrada">\
+            <div class="container-entrada"><span class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></span></div></br>\
+            <div class="container-entrada"><span class="titulos-entrada">UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
                 <option value="">UF</option>\
                 <option value="Acre">AC</option>\
@@ -219,16 +238,18 @@ function simples() {
                 <option value="São Paulo">SP</option>\
                 <option value="Sergipe">SE</option>\
                 <option value="Tocantins">TO</option>\
-            </select></br></div>\
-            <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>\
-            <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>\
-            <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
+            </select></span></div></br>\
+            <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples"><span class="opcao">&nbsp;ICMS</span></label>\
+            <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual"><span class="opcao">&nbsp;ICMS-ST</span></label></br>\
+            <a href="#simples"><button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button></a>\
+        </div>'; // inserir html 
 
     document.querySelector('#resultado').innerHTML = '';
   } else if (document.querySelector('#interestadual').checked = true) {
     document.querySelector('#app').innerHTML = '\
-            <div class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></br></div>\
-            <div>UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
+        <div class="corpo-entrada">\
+            <div class="container-entrada"><span class="titulos-entrada">R$<input type="number" name="base" id="base" placeholder="Valor do Produto" autocomplete="off" inputmode="numeric"/></span></div></br>\
+            <div class="container-entrada"><span class="titulos-entrada">UF<input type="text" name="origem" id="origem" placeholder="Estado" autocomplete="off"/>\
             <select name="origemSelect" id="origemSelect" onclick="carregarOrigem()">\
                 <option value="">UF</option>\
                 <option value="Acre">AC</option>\
@@ -258,10 +279,11 @@ function simples() {
                 <option value="São Paulo">SP</option>\
                 <option value="Sergipe">SE</option>\
                 <option value="Tocantins">TO</option>\
-            </select></br></div>\
-            <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>\
-            <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples">ICMS</label>\
-            <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual">ICMS-ST</label>'; // inserir html 
+            </select></span></div></br>\
+            <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples"><span class="opcao">&nbsp;ICMS</span></label>\
+            <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual"><span class="opcao">&nbsp;ICMS-ST</span></label></br>\
+            <a href="#simples"><button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button></a>\
+        </div>'; // inserir html 
 
     document.querySelector('#resultado').innerHTML = '';
   }
@@ -1832,57 +1854,70 @@ function calculoComplemento() {
 
   var base = document.querySelector('#base').value; // valor do elemento 'input' com id '#base' (valor para base de calculo)
 
+  var baseNumero = parseFloat(base);
   var ipi = document.querySelector('#ipi').value; // valor do elemento 'input' com id '#ipi' (valor do ipi)
 
-  if (ipi === '') {
-    ipi = 0;
+  var ipiNumero = parseFloat(ipi);
+
+  if (ipiNumero === '' || isNaN(ipiNumero)) {
+    ipiNumero = 0;
   } else {
-    ipi = ipi;
+    ipiNumero = ipiNumero;
   }
 
   ;
   var frete = document.querySelector('#frete').value; // valor do elemento 'input' com id '#frete' (valor do frete)
 
-  if (frete === '') {
-    frete = 0;
+  var freteNumero = parseFloat(frete);
+
+  if (freteNumero === '' || isNaN(freteNumero)) {
+    freteNumero = 0;
   } else {
-    frete = frete;
+    freteNumero = freteNumero;
   }
 
   ;
   var seguro = document.querySelector('#seguro').value; // valor do elemento 'input' com id '#seguro' (valor do seguro)
 
-  if (seguro === '') {
-    seguro = 0;
+  var seguroNumero = parseFloat(seguro);
+
+  if (seguroNumero === '' || isNaN(seguroNumero)) {
+    seguroNumero = 0;
   } else {
-    seguro = seguro;
+    seguroNumero = seguroNumero;
   }
 
   ;
   var despesa = document.querySelector('#despesa').value; // valor do elemento 'input' com id '#despesa' (valor das despesas)
 
-  if (despesa === '') {
-    despesa = 0;
+  var despesaNumero = parseFloat(despesa);
+
+  if (despesaNumero === '' || isNaN(despesaNumero)) {
+    despesaNumero = 0;
   } else {
-    despesa = despesa;
+    despesaNumero = despesaNumero;
   }
 
   ;
   var desconto = document.querySelector('#desconto').value; // valor do elemento 'input' com id '#desconto' (valor dos descontos)
 
-  if (desconto === '') {
-    desconto = 0;
+  var descontoNumero = parseFloat(desconto);
+
+  if (descontoNumero === '' || isNaN(descontoNumero)) {
+    descontoNumero = 0;
   } else {
-    desconto = desconto;
+    descontoNumero = descontoNumero;
   }
 
   ;
   var mva = document.querySelector('#mva').value; // valor do elemento 'input' com id '#mva' (valor da aliquota de MVA)
 
-  if (mva === '') {
-    mva = -0;
+  var mvaNumero = parseInt(mva);
+
+  if (mvaNumero === '' || isNaN(mvaNumero)) {
+    mvaNumero = -0;
   } else {
-    mva = mva;
+    mvaNumero = mvaNumero;
   }
 
   ;
@@ -1903,15 +1938,77 @@ function calculoComplemento() {
   } else if (destinoText === 'UF') {
     window.alert('Selecione a UF de destino!');
   } else {
-    var calculoBaseInter = parseInt(base) + parseInt(frete) + parseInt(seguro) + parseInt(despesa) - parseInt(desconto); // base de calculo para o valor do ICMS
+    var calculoBaseInter = baseNumero + freteNumero + seguroNumero + despesaNumero - descontoNumero; // base de calculo para o valor do ICMS
 
-    var valorICMS = calculoBaseInter * (parseInt(valorInter) / 100); // valor do ICMS
+    var valorICMS = calculoBaseInter * (valorInter / 100); // valor do ICMS
 
-    var calculoBaseST = (parseInt(base) + parseInt(ipi) + parseInt(frete) + parseInt(seguro) + parseInt(despesa) - parseInt(desconto)) * (1 + parseInt(mva) / 100); // base de calculo para o valor do ICMS ST
+    var calculoBaseST = (baseNumero + ipiNumero + freteNumero + seguroNumero + despesaNumero - descontoNumero) * (1 + mvaNumero / 100); // base de calculo para o valor do ICMS ST
 
-    var valorST = calculoBaseST * (parseInt(valorDestino) / 100) - valorICMS; // valor do ICMS ST
+    var valorST = calculoBaseST * valorDestino / 100 - valorICMS; // valor do ICMS ST
 
-    document.querySelector('#resultado').innerHTML = "            <div id=\"tabelaResultadoCompleto\">\n                <table>                    <tr>                        <td>Valor do Produto:</td>                        <td>R$ ".concat(base, "</td>                    </tr>                    <tr>                        <td>Valor do IPI:</td>                        <td>R$ ").concat(ipi, "</td>                    </tr>                    <tr>                        <td>Valor do Frete:</td>                        <td>R$ ").concat(frete, "</td>                    </tr>                    <tr>                        <td>Valor das Despesas:</td>                        <td>R$ ").concat(despesa, "</td>                    </tr>                    <tr>                        <td>Valor dos Descontos:</td>                        <td>R$ ").concat(desconto, "</td>                    </tr>                    <tr>                        <td>Al\xEDquota MVA:</td>                        <td>").concat(mva, "%</td>                    </tr>                    <tr>                        <td>Al\xEDquota ").concat(origemText, ":</td>                        <td>").concat(valorOrigem, "%</td>                    </tr>                    <tr>                        <td>Al\xEDquota ").concat(destinoText, ":</td>                        <td>").concat(valorDestino, "%</td>                    </tr>                    <tr>                        <td>Al\xEDquota InterEstadual:</td>                        <td>").concat(valorInter, "%</td>                    </tr>                    <tr>                        <td>Base de C\xE1lculo:</td>                        <td>R$ ").concat(calculoBaseST, "</td>                    </tr>                    <tr>                        <td>Valor do ICMS ST:</td>                        <td>R$ ").concat(valorST, "</td>                     </tr>                </table>\n                <button name=\"novo\" id=\"novo\" onclick=\"complemento()\">Recalcular</button>\n            </div>\n            <div id=\"memoriaCompleta\">\n                <h2>Mem\xF3ria de C\xE1lculo:</strong></h2>                <p>Base do ICMS Interestadual = (").concat(base, " + ").concat(frete, " + ").concat(seguro, " + ").concat(despesa, " - ").concat(desconto, ")</p>                <p>Valor do ICMS Interestadual = ").concat(calculoBaseInter, " x (").concat(valorInter, "% / 100)</p>                <p>Base do ICMS-ST = (").concat(base, " + ").concat(ipi, " + ").concat(frete, " + ").concat(seguro, " + ").concat(despesa, " - ").concat(desconto, ") x (1 + (").concat(mva, "% / 100))</p>\n                <p>Valor do ICMS-ST = (").concat(calculoBaseST, " x (").concat(valorDestino, "% / 100)) - ").concat(valorICMS, "</p>\n                <p>Valor do ICMS-ST = ").concat(valorST, "</p>\n            </div>"); // elemento 'table' e 'p' do html com os resultados
+    var baseFormat = baseNumero.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+    var ipiFormat = ipiNumero.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+    var freteFormat = freteNumero.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+    var despesaFormat = despesaNumero.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+    var descontoFormat = descontoNumero.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+    var seguroFormat = seguroNumero.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+    document.querySelector('#resultado').innerHTML = "            <div id=\"tabelaResultadoCompleto\" class=\"tabelas\">                <table>                    <tr>                        <td>Valor do Produto:</td>                        <td>".concat(baseFormat, "</td>                    </tr>                    <tr>                        <td>Valor do IPI:</td>                        <td>").concat(ipiFormat, "</td>                    </tr>                    <tr>                        <td>Valor do Frete:</td>                        <td>").concat(freteFormat, "</td>                    </tr>                    <tr>                        <td>Valor do Seguro:</td>                        <td>").concat(seguroFormat, "</td>                    </tr>                    <tr>                        <td>Valor das Despesas:</td>                        <td>").concat(despesaFormat, "</td>                    </tr>                    <tr>                        <td>Valor dos Descontos:</td>                        <td>").concat(descontoFormat, "</td>                    </tr>                    <tr>                        <td>Al\xEDquota MVA:</td>                        <td>").concat(mvaNumero, "%</td>                    </tr>                    <tr>                        <td>Al\xEDquota ").concat(origemText, ":</td>                        <td>").concat(valorOrigem, "%</td>                    </tr>                    <tr>                        <td>Al\xEDquota ").concat(destinoText, ":</td>                        <td>").concat(valorDestino, "%</td>                    </tr>                    <tr>                        <td>Al\xEDquota InterEstadual:</td>                        <td>").concat(valorInter, "%</td>                    </tr>                    <tr>                        <td>Base de C\xE1lculo:</td>                        <td>").concat(calculoBaseST.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    }), "</td>                    </tr>                    <tr>                        <td>Valor do ICMS ST:</td>                        <td>").concat(valorST.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    }), "</td>                     </tr>                </table>                <a href=\"#principal\"><button name=\"novo\" id=\"novo\" onclick=\"complemento()\">Recalcular</button></a>            </div>            <div id=\"memoriaCompleta\" class=\"memoria\">                <h2>Mem\xF3ria de C\xE1lculo:</strong></h2>                <p>Base do ICMS Interestadual = (").concat(baseNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " + ").concat(freteNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " + ").concat(seguroNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " + ").concat(despesaNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " - ").concat(descontoNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), ")</p>                <p>Valor do ICMS Interestadual = ").concat(calculoBaseInter.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " x (").concat(valorInter.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), "% / 100)</p>                <p>Base do ICMS-ST = (").concat(baseNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " + ").concat(ipiNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " + ").concat(freteNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " + ").concat(seguroNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " + ").concat(despesaNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " - ").concat(descontoNumero.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), ") x (1 + (").concat(mvaNumero, "% / 100))</p>                <p>Valor do ICMS-ST = (").concat(calculoBaseST.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), " x (").concat(valorDestino, "% / 100)) - ").concat(valorICMS.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), "</p>                <p>Valor do ICMS-ST = ").concat(valorST.toLocaleString('pt-br', {
+      minimumFractionDigits: 2
+    }), "</p>            </div>"); // elemento 'table' e 'p' do html com os resultados
   }
 
   ;
