@@ -7,7 +7,7 @@ Criado em 07/2020
 
 /* FONTES */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 @font-face {
     font-family: 'Roboto', sans-serif;
@@ -15,13 +15,14 @@ Criado em 07/2020
 }
 
 @font-face {
-    font-family: 'Secular One', sans-serif;
+    font-family: 'Permanent Marker', cursive;
     src: url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 }
 
 /* RESETS DO HTML */
 * {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 img {
@@ -47,16 +48,20 @@ body {
     text-align: center;
 }
 
+#hide {
+    padding-top: 30px;
+}
+
 /* CABEÇALHO */
 header {
-    font-family: 'Secular One', sans-serif;
+    font-family: 'Permanent Marker', cursive;
     background-color: #ffea32;
     color: #000000;;
     font-weight: bolder;
     padding: 8px;
     position: fixed;
     width: 100%;
-    box-shadow: 2px 2px 6px #00000098;
+    box-shadow: 2px 2px 6px #00000079;
 }
 
 /* ENTRADAS */
@@ -72,7 +77,8 @@ header {
 }
 
 .titulos-entrada {
-    font-family: 'Secular One', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
     background-color: #ffea32;
     color: #000000;
     padding: 4px;
@@ -81,7 +87,8 @@ header {
     box-shadow: 2px 2px 6px #00000098;
 }
 .opcao {
-    font-family: 'Secular One', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
 }
 
 input {
@@ -95,13 +102,16 @@ input {
 }
 
 select {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
     padding: 0px 2px 0px 0px;
     border-style: none;
     border-radius: 6px;
 }
 
 button {
-    font-family: 'Secular One', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
     background-color: #FE5E41;
     color: #ffffff;
     margin-top: 10px;
@@ -131,14 +141,14 @@ button {
 }
 
 #explicacao h1 {
-    font-family: 'Secular One', sans-serif;
+    font-family: 'Permanent Marker', cursive;
     font-size: 32px;
     line-height: 32px;
 }
 
 /* RODAPE */
 footer {
-    font-family: 'Secular One', sans-serif;
+    font-family: 'Permanent Marker', cursive;
     font-weight: bolder;
     font-size: 14px;
     background-color: #00A878;
@@ -187,6 +197,10 @@ footer a {
     border-color: #00A878;
     padding-left: 6px;
     padding-right: 6px;
+}
+
+.memoria h2 {
+    font-family: 'Permanent Marker', cursive;
 }
 
 /* IMAGEM */

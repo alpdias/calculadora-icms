@@ -12,6 +12,8 @@ Microsoft VSCode 1.46.1 </br>
 Codificação: -&lowast;- coding: utf-8 -&lowast;- </br>
 pt-BR </br> 
 
+![calculadora-icms-resultado]()
+
 ---------------------------------------------------------------------------------------------
 
 # ICMS calculator
@@ -27,5 +29,7 @@ HTML5 | CSS3 </br>
 Microsoft VSCode 1.46.1 </br>
 Coding: -&lowast;- coding: utf-8 -&lowast;- </br>
 pt-BR </br>
+
+![calculadora-icms-resultado]()
 
 --------------------------------------------------------------------------------------------

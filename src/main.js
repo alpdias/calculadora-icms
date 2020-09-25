@@ -112,7 +112,7 @@ function calculoSimples() { // funçao para calcular o valor do ICMS
                         <td>${calculoFormart}</td>\
                     </tr>\
                 </table>\
-                <button name="novo" id="novo" onclick="simples()">Recalcular</button>\
+                <a href="#principal"><button name="novo" id="novo" onclick="simples()">Recalcular</button></a>\
             </div>\
             <div id="memoriaSimples" class="memoria">\
                 <h2>Memória de Cálculo:</h2>\
@@ -199,7 +199,7 @@ function complemento() { // funçao para verificar se o elemento 'radio' no html
             </select></span></div></br>\
             <input type="radio" name="Inter" id="simples" onclick="simples()"/><label for="simples"><span class="opcao">&nbsp;ICMS</span></label>\
             <input type="radio" name="Inter" id="interestadual" checked onclick="complemento()"/><label for="interestadual"><span class="opcao">&nbsp;ICMS-ST</span></label></br>\
-            <button name="calcular" id="calcular" onclick="calculoComplemento()">Calcular</button>\
+            <a href="#simples"><button name="calcular" id="calcular" onclick="calculoComplemento()">Calcular</button></a>\
         </div>'; // inserir html 
     
     document.querySelector('#resultado').innerHTML = '';
@@ -244,7 +244,7 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
             </select></span></div></br>\
             <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples"><span class="opcao">&nbsp;ICMS</span></label>\
             <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual"><span class="opcao">&nbsp;ICMS-ST</span></label></br>\
-            <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>\
+            <a href="#simples"><button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button></a>\
         </div>'; // inserir html 
         
         document.querySelector('#resultado').innerHTML = '';
@@ -286,7 +286,7 @@ function simples() { // funçao para verificar se o elemento 'radio' no html est
             </select></span></div></br>\
             <input type="radio" name="Inter" id="simples" checked onclick="simples()"/><label for="simples"><span class="opcao">&nbsp;ICMS</span></label>\
             <input type="radio" name="Inter" id="interestadual" onclick="complemento()"/><label for="interestadual"><span class="opcao">&nbsp;ICMS-ST</span></label></br>\
-            <button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button>\
+            <a href="#simples"><button name="calcular" id="calcular" onclick="calculoSimples()">Calcular</button></a>\
         </div>'; // inserir html 
 
         document.querySelector('#resultado').innerHTML = '';
@@ -1982,7 +1982,7 @@ function calculoComplemento() { // funçao para calcular o valor do ICMS ST
                         <td>${valorST.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</td>\
                      </tr>\
                 </table>\
-                <button name="novo" id="novo" onclick="complemento()">Recalcular</button>\
+                <a href="#principal"><button name="novo" id="novo" onclick="complemento()">Recalcular</button></a>\
             </div>\
             <div id="memoriaCompleta" class="memoria">\
                 <h2>Memória de Cálculo:</strong></h2>\
