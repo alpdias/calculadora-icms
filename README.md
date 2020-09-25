@@ -14,6 +14,8 @@ pt-BR </br>
 
 ![calculadora-icms-resultado](https://github.com/alpdias/calculadora-icms-js/blob/master/img/calculadora-icms-resultado.jpg)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/64a0a272-d2c5-4cb6-9eed-88df993b5c03/deploy-status)](https://app.netlify.com/sites/calculadora-icms/deploys)
+
 ---------------------------------------------------------------------------------------------
 
 # ICMS calculator
@@ -31,5 +33,7 @@ Coding: -&lowast;- coding: utf-8 -&lowast;- </br>
 pt-BR </br>
 
 ![calculadora-icms-resultado](https://github.com/alpdias/calculadora-icms-js/blob/master/img/calculadora-icms-resultado.jpg)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/64a0a272-d2c5-4cb6-9eed-88df993b5c03/deploy-status)](https://app.netlify.com/sites/calculadora-icms/deploys)
 
 --------------------------------------------------------------------------------------------
