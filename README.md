@@ -4,7 +4,7 @@ WebSite criado para realizar de maneira simples e rápida o cálculo de imposto 
 
 <strong>Disponível no meu portifólio:</strong> https://paulodeveloper.netlify.com/
 
-Andamento -> <strong>99%</strong> - Offline
+Andamento -> <strong>100%</strong> - Online
 
 JavaScript </br>
 HTML5 | CSS3 </br>
@@ -24,7 +24,7 @@ WebSite created to easily and quickly calculate the ICMS tax, showing the calcul
 
 <strong>Available in my portfolio:</strong> https://paulodeveloper.netlify.com/
 
-Progress -> <strong>99%</strong> - Offline
+Progress -> <strong>100%</strong> - Online
 
 JavaScript </br>
 HTML5 | CSS3 </br>
